@@ -1,0 +1,35 @@
+General Java
+	Simple aliasing
+	Indirect aliasing
+	Aliasing through methods
+	Aliasing through static methods
+	Static variables
+	Return value
+	Parameters
+	Interfaces
+	Super classes (1, 2)
+	Outer classes
+	Null aliasing
+	Exceptions
+	Loops
+	Recursion
+
+Corner cases
+	Access paths (field sensitivity)
+	Object sensitivity
+	Flow sensitive
+	Heap sensitive
+	Reflexion
+	Context sensitive (1, 2 callers)
+	Strong updates
+
+Collections
+	Arrays
+	Lists
+	Maps
+
+Threading?
+IFDS specific cases (field writes?)
+
+
+
