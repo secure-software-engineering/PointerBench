@@ -3,9 +3,17 @@ package basic;
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 
+/*
+ * @testcase SimpleAlias
+ * @version 1.0
+ * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
+ * 
+ * @description Simple alias
+ * 
+ */
 public class SimpleAlias {
 
-	public void simpleAlias() {
+	public static void main(String[] args) {
 
 		Benchmark.alloc(1);
 		A a = new A();
