@@ -1,5 +1,6 @@
 package collections;
 
+import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 
 /*
@@ -14,12 +15,15 @@ public class Array2 {
 
 	public static void main(String[] args) {
 
+		Benchmark.alloc(1);
 		A[][] array = new A[][] {};
 		A a = new A();
 		A b = new A();
 		array[0][0] = a;
 		array[1][1] = b;
 		A[] slice = array[1];
-		// TODO: what does slice alias to?
+		Benchmark
+				.test("slice",
+						"{allocId:1, mayAlias:[slice,array], notMayAlias:[a,b], mustAlias:[slice,array], notMustAlias:[a,b]}");
 	}
 }
