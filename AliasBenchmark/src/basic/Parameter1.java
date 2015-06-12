@@ -1,0 +1,29 @@
+package basic;
+
+import benchmark.internal.Benchmark;
+import benchmark.objects.A;
+
+/*
+ * @testcase ParameterAlias1
+ * @version 1.0
+ * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
+ * 
+ * @description Aliasing through parameter 1. Static methods
+ * 
+ */
+public class Parameter1 {
+
+	public static void test(A x) {
+		A b = x;
+		Benchmark
+				.test("b",
+						"{allocId:1, mayAlias:[b,x], notMayAlias:[], mustAlias:[b,x], notMustAlias:[]}");
+	}
+
+	public static void main(String[] args) {
+
+		Benchmark.alloc(1);
+		A a = new A();
+		test(a);
+	}
+}

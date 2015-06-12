@@ -4,14 +4,14 @@ import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 
 /*
- * @testcase IndirectAlias
+ * @testcase IndirectAlias1
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
  * @description Indirect alias
  * 
  */
-public class IndirectAlias {
+public class Indirect1 {
 
 	public static void main(String[] args) {
 
@@ -23,6 +23,6 @@ public class IndirectAlias {
 		A x = b.f;
 		Benchmark
 				.test("x",
-						"{allocId:1, mayAlias:[x,y], mayNotAlias:[a,b], mustAlias:[x,y], mustNotAlias:[a,b]}");
+						"{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[x,y], notMustAlias:[a,b]}");
 	}
 }

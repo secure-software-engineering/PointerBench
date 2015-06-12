@@ -50,8 +50,8 @@ public class DartQueryInfo {
 		matcher.find();
 		String mayAlias = matcher.group(1);
 		matcher.find();
-		String mayNotAlias = matcher.group(1);
-		AliasInfo ai = new AliasInfo(mayAlias, mayNotAlias);
+		String notMayAlias = matcher.group(1);
+		AliasInfo ai = new AliasInfo(mayAlias, notMayAlias);
 		return ai;
 	}
 
@@ -63,8 +63,8 @@ public class DartQueryInfo {
 		matcher.find();
 		String mustAlias = matcher.group(1);
 		matcher.find();
-		String mustNotAlias = matcher.group(1);
-		AliasInfo ai = new AliasInfo(mustAlias, mustAlias);
+		String notMustAlias = matcher.group(1);
+		AliasInfo ai = new AliasInfo(mustAlias, notMustAlias);
 		return ai;
 	}
 

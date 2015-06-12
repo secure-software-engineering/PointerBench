@@ -1,11 +1,9 @@
 General Java
 	Simple aliasing
 	Indirect aliasing
-	Aliasing through methods
-	Aliasing through static methods
 	Static variables
 	Return value
-	Parameters
+	Parameters (1 static, 2 not static)
 	Interfaces
 	Super classes (1, 2)
 	Outer classes
