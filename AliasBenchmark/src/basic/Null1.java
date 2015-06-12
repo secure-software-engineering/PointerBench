@@ -4,23 +4,20 @@ import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 
 /*
- * @testcase SimpleAlias1
+ * @testcase Null1
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Direct alias
+ * @description Direct alias to null
  * 
  */
-public class SimpleAlias1 {
+public class Null1 {
 
 	public static void main(String[] args) {
 
-		Benchmark.alloc(1);
-		A a = new A();
-
+		// No allocation site
+		A a = null;
 		A b = a;
-		Benchmark
-				.test("b",
-						"{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
+		Benchmark.test("b", "");
 	}
 }

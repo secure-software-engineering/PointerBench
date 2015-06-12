@@ -6,6 +6,6 @@ public class A {
 
 	public A f = new A();
 	public A g = new A();
-	public A h = new A();
+	public A h;
 
 }

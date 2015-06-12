@@ -8,7 +8,7 @@ import benchmark.objects.A;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Aliasing through parameter 1. Static methods
+ * @description Aliasing through static method parameter
  * 
  */
 public class Parameter1 {

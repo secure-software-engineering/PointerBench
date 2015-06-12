@@ -8,7 +8,7 @@ import benchmark.objects.A;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Branching 1
+ * @description Branching
  * 
  */
 public class Branching1 {

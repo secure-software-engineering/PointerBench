@@ -19,7 +19,7 @@ import soot.jimple.Stmt;
 public class TestSoot {
 
 	public static void main(String[] args) {
-		getQueryForTest("basic.SimpleAlias");
+		getQueryForTest("basic.SimpleAlias1");
 	}
 
 	public static void getQueryForTest(final String mainClass) {
