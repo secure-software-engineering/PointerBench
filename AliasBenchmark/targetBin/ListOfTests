@@ -1,17 +1,19 @@
-General Java
+Basic
 	Simple aliasing
 	Indirect aliasing
-	Static variables
-	Return value
+	Branching
 	Parameters (1 static, 2 not static)
+	Return value
+	Loops
+	Recursion
+
+General Java
+	Static variables
 	Interfaces
 	Super classes (1, 2)
 	Outer classes
 	Null aliasing
 	Exceptions
-	Branching
-	Loops
-	Recursion
 
 Corner cases
 	Access paths (field sensitivity)

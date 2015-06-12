@@ -1,23 +1,25 @@
-package basic;
+package generalJava;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import benchmark.objects.B;
 
 /*
- * @testcase Null1
+ * @testcase Null2
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Direct alias to null
+ * @description Implicit alias to null
  * 
  */
-public class Null1 {
+public class Null2 {
 
 	public static void main(String[] args) {
 
 		// No allocation site
-		A a = null;
+		A a = new A();
 		A b = a;
-		Benchmark.test("b", "");
+		B x = b.h; // a.h is null
+		Benchmark.test("x", "");
 	}
 }

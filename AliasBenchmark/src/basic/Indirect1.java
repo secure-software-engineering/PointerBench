@@ -2,6 +2,7 @@ package basic;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import benchmark.objects.B;
 
 /*
  * @testcase IndirectAlias1
@@ -18,9 +19,9 @@ public class Indirect1 {
 		A a = new A();
 		A b = a;
 		Benchmark.alloc(1);
-		a.f = new A();
-		A y = a.f;
-		A x = b.f;
+		a.f = new B();
+		B y = a.f;
+		B x = b.f;
 		Benchmark
 				.test("x",
 						"{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[x,y], notMustAlias:[a,b]}");
