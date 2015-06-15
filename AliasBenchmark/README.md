@@ -22,11 +22,9 @@ General Java
 Corner cases
 	Access paths (field sensitivity)		1
 	Object sensitive (1 caller, 2 receiver)	2
-	Flow sensitive							-
+	Flow sensitive							1
 	Heap sensitive							-
-	Reflexion								-
-	Context sensitive (1, 2 callers)		-
-	Strong updates							-
+	Context sensitive 						1
 
 Collections
 	Arrays (1 element, 2 slice)				2
