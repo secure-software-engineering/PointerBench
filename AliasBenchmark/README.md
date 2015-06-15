@@ -2,29 +2,28 @@ List of tests:
 
 Basic
 	Simple aliasing							1
-	Indirect aliasing						1
 	Branching								1
 	Parameters (1 static, 2 not static)		2
 	Method alias (1 static, 2 not static)	2
 	Return value (1 static, 2 not static)	2
-	Loops									1
-	Recursion								1
+	Loops									1		-> LISA put N inside
+	Recursion								1		-> LISA put N inside
 
 General Java
-	Static variables (2 allocation sites)	2
+	Static variables 						1
 	Interfaces								1
 	Super classes							1
 	Outer classes							1
 	Null aliasing (1 direct, 2 indirect)	2
 	Exceptions (1 triggered, 2 not trigg)	2
-	? Two subclasses test? Do or not?
 
 Corner cases
 	Access paths (field sensitivity)		1
 	Object sensitive (1 caller, 2 receiver)	2
 	Flow sensitive							1
-	Heap sensitive							-
-	Context sensitive 						1
+	Heap sensitive							-		-> TODO leave that for the moment
+	Context sensitive 						1		-> TODO must alias?						-> LISA 2-3 CS
+	Strong updates							1
 
 Collections
 	Arrays (1 element, 2 slice)				2

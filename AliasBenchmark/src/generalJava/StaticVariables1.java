@@ -8,7 +8,7 @@ import benchmark.objects.A;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Alias to a static variable, allocation site inside of a method
+ * @description Alias to a static variable, allocation site at the static variable site
  * 
  */
 public class StaticVariables1 {
@@ -17,8 +17,8 @@ public class StaticVariables1 {
 
 	public static void main(String[] args) {
 		Benchmark.alloc(1);
-		A b = new A();
-		A a = b;
+		a = new A();
+		A b = a;
 		Benchmark
 				.test("b",
 						"{allocId:1, mayAlias:[b,a], notMayAlias:[], mustAlias:[b,a], notMustAlias:[]}");

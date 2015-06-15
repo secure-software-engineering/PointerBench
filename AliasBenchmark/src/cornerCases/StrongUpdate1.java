@@ -1,18 +1,18 @@
-package basic;
+package cornerCases;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 import benchmark.objects.B;
 
 /*
- * @testcase IndirectAlias1
+ * @testcase StrongUpdate1
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
  * @description Indirect alias of a.f and b.f through alias of a and b 
  * 
  */
-public class Indirect1 {
+public class StrongUpdate1 {
 
 	public static void main(String[] args) {
 

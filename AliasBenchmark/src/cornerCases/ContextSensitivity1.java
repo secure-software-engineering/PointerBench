@@ -21,8 +21,6 @@ public class ContextSensitivity1 {
 				.test("b",
 						"{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]},"
 								+ "{allocId:2, mayAlias:[a], notMayAlias:[b], mustAlias:[a], notMustAlias:[b]}");
-		// TODO: is this info good?
-		// TODO: What is must alias here?
 	}
 
 	public void test1() {
@@ -33,8 +31,8 @@ public class ContextSensitivity1 {
 	}
 
 	public void test2() {
-		Benchmark.alloc(2);
 		A a2 = new A();
+		Benchmark.alloc(2);
 		A b2 = new A();
 		callee(a2, b2);
 	}
@@ -42,5 +40,6 @@ public class ContextSensitivity1 {
 	public static void main(String[] args) {
 		ContextSensitivity1 cs1 = new ContextSensitivity1();
 		cs1.test1();
+		cs1.test2();
 	}
 }

@@ -16,9 +16,12 @@ public class FlowSensitivity1 {
 	public static void main(String[] args) {
 
 		A a = new A();
+		Benchmark.alloc(1);
 		A b = new A();
 
-		Benchmark.test("b", "");
+		Benchmark
+				.test("b",
+						"{allocId:1, mayAlias:[b], notMayAlias:[a], mustAlias:[b], notMustAlias:[a]}");
 
 		b = a;
 	}

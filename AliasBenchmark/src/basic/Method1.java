@@ -2,6 +2,7 @@ package basic;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import benchmark.objects.B;
 
 /*
  * @testcase Method1
@@ -14,17 +15,22 @@ import benchmark.objects.A;
 public class Method1 {
 
 	public static void alloc(A x, A y) {
-		x = y;
+		x.f = y.f;
 	}
 
 	public static void main(String[] args) {
 
-		Benchmark.alloc(1);
 		A a = new A();
 		A b = new A();
+
+		Benchmark.alloc(1);
+		b.f = new B();
 		alloc(a, b);
+
+		B x = a.f;
+		B y = b.f;
 		Benchmark
-				.test("b",
-						"{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
+				.test("x",
+						"{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[x,y], notMustAlias:[a,b]}");
 	}
 }

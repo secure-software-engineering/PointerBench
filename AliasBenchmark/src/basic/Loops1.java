@@ -24,10 +24,15 @@ public class Loops1 {
 			i++;
 		}
 
+		c = node.next;
+		b = node.next.next;
+
 		// TODO: Where is the allocation site for DART?
+		// Put N as an inner class to Loops1
+
 		// TODO: What does node alias to?
 		// Benchmark
 		// .test("node",
-		// "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
+		// "{allocId:1, mayAlias:[node, node.next], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
 	}
 }
