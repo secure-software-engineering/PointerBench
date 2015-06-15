@@ -8,7 +8,7 @@ import benchmark.objects.A;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description No alias in exception
+ * @description No alias in exception (exception never triggered)
  * 
  */
 public class Exception2 {

@@ -8,7 +8,7 @@ import benchmark.objects.A;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Branching
+ * @description Condition. a and b alias on one path, not on the other
  * 
  */
 public class Branching1 {

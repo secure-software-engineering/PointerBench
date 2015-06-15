@@ -9,7 +9,7 @@ import benchmark.objects.B;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Indirect alias
+ * @description Indirect alias of a.f and b.f through alias of a and b 
  * 
  */
 public class Indirect1 {
