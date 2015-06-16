@@ -12,6 +12,12 @@ public class BasicTest {
 	public void loops1(){
 		new YanExecutor("basic.Loops1");
 	}
+
+	@Test
+	public void loops2(){
+		new YanExecutor("basic.Loops2");
+	}
+	
 	@Test
 	public void method1(){
 		new YanExecutor("basic.Method1");

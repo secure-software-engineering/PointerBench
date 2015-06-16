@@ -20,6 +20,7 @@ public class Exception2 {
 		A b = new A();
 
 		try {
+			Integer.parseInt("abc");
 			a = b;
 
 		} catch (RuntimeException e) {

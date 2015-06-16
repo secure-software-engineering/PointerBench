@@ -32,7 +32,6 @@ public abstract class Test {
 
 	public void getQueryForTest() {
 		initializeSoot();
-		// Replace NumericConstants in calls
 		Transform callConstantTransformer = new Transform("wjtp.preparation",
 				new SceneTransformer() {
 
@@ -49,19 +48,9 @@ public abstract class Test {
 
 
 
-//		PackManager.v().getPack("jb").apply();
-		//PackManager.v().getPack("jb").apply();
-		//verify(handler);
 		PackManager.v().getPack("cg").apply();
 		PackManager.v().getPack("wjtp").add(callConstantTransformer);
 		PackManager.v().getPack("wjtp").apply();
-		
-//		// Run Soot
-//		Main.main(new String[] { "-p", "cg.spark", "on", "-p", "cg.spark",
-//				"string-constants:true", "-p", "jb", "use-original-names:true",
-//				"-w", "-x", "java.", "-x", "javax.", "-allow-phantom-refs",
-//				"-no-bodies-for-excluded", "-process-dir", "./bin",
-//				"-src-prec", "only-class", "-output-format", "none", mainClass });
 	}
 
 

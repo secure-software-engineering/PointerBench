@@ -1,6 +1,7 @@
 package benchmark.internal;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -114,6 +115,24 @@ public class QueryInfo {
 
 	public Map<String, AliasInfo> getAllocationSiteInfo(){
 		return allocationSites;
+	}
+
+	public int computeExecpectedPointsToSize() {
+		int counter = 0;
+		for(String key : allocationSites.keySet()){
+			if(!key.equals("NULLALLOC"))
+				counter++;
+		}
+		return counter;
+	}
+
+	public Set<Local> getTruePositives() {
+		Set<Local> out = new HashSet<>();
+		for(String key : allocationSites.keySet()){
+			AliasInfo aliasInfo = allocationSites.get(key);
+			out.addAll(aliasInfo.getAliases());
+		}
+		return out;
 	}
 
 }

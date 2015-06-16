@@ -26,16 +26,18 @@ public abstract class Evaluator {
 	protected Map<String, AliasInfo> allocationSites;
 	protected AliasFinder dart;
 	protected InfoflowCFG cfg;
+	private QueryInfo queryInfo;
 
 	public Evaluator(QueryInfo queryInfo) {
 		method = queryInfo.getMethod();
 		testVariable = queryInfo.getVariable();
 		testStmt = queryInfo.getStmt();
 		allocationSites = queryInfo.getAllocationSiteInfo();
+		this.queryInfo = queryInfo;
 	}
 
 
-	public void evaluateAlias(){
+	public ExprResult evaluateAlias(){
 		Set<Local> falseNegativesPairs = new HashSet<>();
 		Set<Local> falsePositivesPairs = new HashSet<>();
 		Set<Local> gt = new HashSet<>();
@@ -57,17 +59,15 @@ public abstract class Evaluator {
 				notAliasIntersection = Sets.intersection(notAliasIntersection, aliasInfo.getNotAliases());
 			}
 		}
-		
-		if(notAliasIntersection == null)
-			return;
-		
-		for(Local l: notAliasIntersection){
-			if(alias(l)){
-				falsePositivesPairs.add(l);
+		if(notAliasIntersection != null){
+			for(Local l: notAliasIntersection){
+				if(alias(l)){
+					falsePositivesPairs.add(l);
+				};
 			};
-		};
+		}
 		int pointsToSize = getPointsToSize();	
-		int expected = computeExecpectedPointsToSize();
+		int expected = queryInfo.computeExecpectedPointsToSize();
 		System.out.println("=========RESULTS FOR  "+ method.getDeclaringClass().getName() + "========");
 		System.out.println("GT:"+gt.size() +"," +gt );
 		System.out.println("FN:"+falseNegativesPairs.size()+ "," + falseNegativesPairs);
@@ -76,15 +76,8 @@ public abstract class Evaluator {
 			System.out.println("PTSGT:"+expected );
 			System.out.println("REPORTED:"+pointsToSize );
 		}
-		assertTrue((falseNegativesPairs.size() == 0 ? "":"FN: " + falseNegativesPairs )+ " " +(falsePositivesPairs.size() == 0 ?"" : "FP:" + falsePositivesPairs) +(pointsToSize == -1 ? "" :" Reported number of allocation site: " + pointsToSize + ", expected: " + expected ),falseNegativesPairs.size() == 0 && falsePositivesPairs.size() == 0 && (pointsToSize == -1 ? true : expected == pointsToSize));
-	}
-	private int computeExecpectedPointsToSize() {
-		int counter = 0;
-		for(String key : allocationSites.keySet()){
-			if(!key.equals("NULLALLOC"))
-				counter++;
-		}
-		return counter;
+		
+		return new ExprResult(falsePositivesPairs, falseNegativesPairs, pointsToSize);
 	}
 
 
