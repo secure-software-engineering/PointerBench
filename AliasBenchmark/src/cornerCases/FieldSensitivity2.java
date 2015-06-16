@@ -5,21 +5,23 @@ import benchmark.objects.A;
 import benchmark.objects.B;
 
 /*
- * @testcase FieldSensitivity1
+ * @testcase FieldSensitivity2
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Field Sensitivity with static method
+ * @description Field Sensitivity without static method
  * 
  */
-public class FieldSensitivity1 {
+public class FieldSensitivity2 {
 
-	private static void assign(A x, A y) {
+	public FieldSensitivity2() {
+	}
+
+	private void assign(A x, A y) {
 		y.f = x.f;
 	}
 
-	public static void main(String[] args) {
-
+	private void test() {
 		Benchmark.alloc(1);
 		B b = new B();
 		A a = new A(b);
@@ -30,7 +32,12 @@ public class FieldSensitivity1 {
 		Benchmark
 				.test("d",
 						"{allocId:1, mayAlias:[d,b], notMayAlias:[a,c], mustAlias:[d,b], notMustAlias:[a,c]}");
+	}
 
+	public static void main(String[] args) {
+
+		FieldSensitivity2 fs2 = new FieldSensitivity2();
+		fs2.test();
 	}
 
 }
