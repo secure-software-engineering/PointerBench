@@ -2,17 +2,16 @@ package cornerCases;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
-import benchmark.objects.B;
 
 /*
  * @testcase AccessPath1
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Support of access paths
+ * @description Query for access paths
  * 
  */
-public class AccessPath1 {
+public class AccessPath2 {
 
 	public static void main(String[] args) {
 
@@ -21,10 +20,8 @@ public class AccessPath1 {
 		A b = new A();
 
 		a.f = b.f;
-		B x = a.f;
-		B y = b.f;
 		Benchmark
-				.test("x",
-						"{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[a.f,b.f], notMustAlias:[a,b]}");
+				.test("a.f",
+						"{allocId:1, mayAlias:[a.f,b.f], notMayAlias:[a,b], mustAlias:[a.f,b.f], notMustAlias:[a,b]}");
 	}
 }

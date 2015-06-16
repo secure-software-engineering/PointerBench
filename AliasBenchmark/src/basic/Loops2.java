@@ -31,6 +31,7 @@ public class Loops2 {
 	private void test() {
 		Benchmark.alloc(1);
 		N node = new N();
+		N n = node;
 
 		int i = 0;
 		while (i < 10) {
@@ -38,9 +39,9 @@ public class Loops2 {
 			i++;
 		}
 
-		N o = node.next;
-		N p = node.next.next;
-		N q = node.next.next.next;
+		N o = n.next;
+		N p = n.next.next;
+		N q = n.next.next.next;
 
 		Benchmark
 				.test("node",
