@@ -2,28 +2,32 @@ package benchmark.internal;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import soot.Local;
+import soot.SootMethod;
 import soot.jimple.Stmt;
+import tests.AliasTest;
 
-public class DartQueryInfo {
+public class QueryInfo {
 
 	private Stmt testStmt;
-	private String testVariable;
+	private SootMethod method;
+	private Local testVariable;
 	private static final Pattern TAG_REGEX = Pattern.compile("\\{(.*?)\\}");
 	private static final Pattern TAG_REGEX2 = Pattern.compile("\\[(.*?)\\]");
 
 	private Map<String, AliasInfo> allocationSites = new HashMap<String, AliasInfo>();
 
-	public DartQueryInfo() {
-	}
 
-	public void registerTestInfo(Stmt testStmt, String testVariable,
+	public void registerTestInfo(Stmt testStmt, SootMethod method,String testVariable,
 			String results) {
+		this.method = method;
 		this.testStmt = testStmt;
-		this.testVariable = testVariable
-				.substring(1, testVariable.length() - 1);
+		this.testVariable = extractSingleLocalFromString(testVariable
+				.substring(1, testVariable.length() - 1));
 
 		final Matcher matcher = TAG_REGEX.matcher(results);
 		while (matcher.find()) {
@@ -51,10 +55,16 @@ public class DartQueryInfo {
 		String mayAlias = matcher.group(1);
 		matcher.find();
 		String notMayAlias = matcher.group(1);
-		AliasInfo ai = new AliasInfo(mayAlias, notMayAlias);
+		AliasInfo ai = new AliasInfo(extractLocalsFromString(mayAlias), extractLocalsFromString(notMayAlias));
 		return ai;
 	}
 
+	private Set<Local> extractLocalsFromString(String localsString){
+		return AliasTest.findLocal(this.method.getActiveBody().getLocals(), localsString.split(","));
+	}
+	private Local extractSingleLocalFromString(String localsString){
+		return AliasTest.findSingleLocal(this.method.getActiveBody().getLocals(), localsString);
+	}
 	// Take the fourth and fifth one (must information)
 	private AliasInfo extractMustInformation(String aliasInfo) {
 		final Matcher matcher = TAG_REGEX2.matcher(aliasInfo);
@@ -64,7 +74,7 @@ public class DartQueryInfo {
 		String mustAlias = matcher.group(1);
 		matcher.find();
 		String notMustAlias = matcher.group(1);
-		AliasInfo ai = new AliasInfo(mustAlias, notMustAlias);
+		AliasInfo ai = new AliasInfo(extractLocalsFromString(mustAlias), extractLocalsFromString(notMustAlias));
 		return ai;
 	}
 
@@ -87,6 +97,22 @@ public class DartQueryInfo {
 			sb.append("\t" + allocationSites.get(s).toString() + "\n");
 		}
 		return sb.toString();
+	}
+	
+	public Stmt getStmt(){
+		return testStmt;
+	}
+	
+	public Local getVariable(){
+		return testVariable;
+	}
+	
+	public SootMethod getMethod(){
+		return method;
+	}
+
+	public Map<String, AliasInfo> getAllocationSiteInfo(){
+		return allocationSites;
 	}
 
 }

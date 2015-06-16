@@ -1,16 +1,20 @@
 package benchmark.internal;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import soot.Local;
 import soot.jimple.Stmt;
 
 public class AliasInfo {
 
 	private Stmt stmt;
-	private String[] alias = new String[] {};
-	private String[] notAlias = new String[] {};
+	private Set<Local> alias = new HashSet<>();
+	private Set<Local> notAlias = new HashSet<>();
 
-	public AliasInfo(String alias, String notAlias) {
-		this.alias = alias.split(",");
-		this.notAlias = notAlias.split(",");
+	public AliasInfo(Set<Local> alias, Set<Local> notAlias) {
+		this.alias = alias;
+		this.notAlias = notAlias;
 	}
 
 	public AliasInfo(Stmt stmt) {
@@ -25,20 +29,28 @@ public class AliasInfo {
 		return this.stmt;
 	}
 
+	public Set<Local> getAliases(){
+		return alias;
+	}
+	
+	public Set<Local> getNotAliases(){
+		return notAlias;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Allocation site " + stmt);
 		sb.append(" -> alias: [");
 		String prefix = "";
-		for (String s : alias) {
+		for (Local s : alias) {
 			sb.append(prefix);
 			prefix = ", ";
 			sb.append(s);
 		}
 		sb.append("], not alias: [");
 		prefix = "";
-		for (String s : notAlias) {
+		for (Local s : notAlias) {
 			sb.append(prefix);
 			prefix = ", ";
 			sb.append(s);
