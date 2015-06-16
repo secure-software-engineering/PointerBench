@@ -59,7 +59,8 @@ How to test a pointer analysis
 Alias analysis
 	Query: at statement s, do a and b alias?
 	Only consider the Benchmark.test() statement. 
-	Collect the mayAlias and notMayAlias information (or must information, according to what is tested). 
+	Collect the mayAlias and notMayAlias information (or must information, according to what is tested) (union over all allocation sites). 
+	For each variable in the mayAlias set, remove the possible duplicates in the mayNotAlias set.
 	For each variable in the mayAlias set, make sure that it aliases to the test access path ("a.f").
 	For each variable in the notMayAlias set, make sure that it does not alias to the test access path ("a.f").
 	
