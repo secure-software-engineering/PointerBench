@@ -6,8 +6,8 @@ Basic
 	Parameters (1 static, 2 not static)		2
 	Method alias (1 static, 2 not static)	2
 	Return value (1 static, 2 not static)	2
-	Loops									1		-> LISA put N inside
-	Recursion								1		-> LISA put N inside
+	Loops									1	
+	Recursion								1	
 
 General Java
 	Static variables 						1

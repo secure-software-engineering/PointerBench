@@ -1,7 +1,6 @@
 package basic;
 
 import benchmark.internal.Benchmark;
-import benchmark.objects.N;
 
 /*
  * @testcase Loops1
@@ -13,8 +12,18 @@ import benchmark.objects.N;
  */
 public class Loops1 {
 
-	public static void main(String[] args) {
+	public class N {
+		public String value;
+		public N next;
 
+		public N(String value) {
+			this.value = value;
+			Benchmark.alloc(2);
+			next = null;
+		}
+	}
+
+	private void test() {
 		Benchmark.alloc(1);
 		N node = new N("");
 
@@ -24,15 +33,18 @@ public class Loops1 {
 			i++;
 		}
 
-		c = node.next;
-		b = node.next.next;
+		N o = node.next;
+		N p = node.next.next;
+		N q = node.next.next.next;
 
-		// TODO: Where is the allocation site for DART?
-		// Put N as an inner class to Loops1
+		Benchmark
+				.test("node",
+						"{allocId:1, mayAlias:[node], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[i,o,p,q]},"
+								+ "{allocId:2, mayAlias:[node,o,p,q], notMayAlias:[i], mustAlias:[node,o,p,q], notMustAlias:[i]}");
+	}
 
-		// TODO: What does node alias to?
-		// Benchmark
-		// .test("node",
-		// "{allocId:1, mayAlias:[node, node.next], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
+	public static void main(String[] args) {
+		Loops1 l1 = new Loops1();
+		l1.test();
 	}
 }

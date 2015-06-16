@@ -1,7 +1,6 @@
 package basic;
 
 import benchmark.internal.Benchmark;
-import benchmark.objects.N;
 
 /*
  * @testcase Recursion1
@@ -16,26 +15,44 @@ public class Recursion1 {
 	public Recursion1() {
 	}
 
-	public N test(int i, N m) {
+	public class N {
+		public String value;
+		public N next;
+
+		public N(String value) {
+			this.value = value;
+			Benchmark.alloc(2);
+			next = null;
+		}
+	}
+
+	public N recursive(int i, N m) {
 		if (i < 10) {
 			int j = i + 1;
-			return test(j, m.next);
+			return recursive(j, m.next);
 		}
 		return m;
 	}
 
-	public static void main(String[] args) {
-
+	public void test() {
 		Benchmark.alloc(1);
 		N node = new N("");
 
 		Recursion1 r1 = new Recursion1();
-		N n = r1.test(0, node);
+		N n = r1.recursive(0, node);
 
-		// TODO: Where is the allocation site for DART?
-		// TODO: What does n alias to?
-		// Benchmark
-		// .test("node",
-		// "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
+		N o = node.next;
+		N p = node.next.next;
+		N q = node.next.next.next;
+
+		Benchmark
+				.test("n",
+						"{allocId:1, mayAlias:[n], notMayAlias:[i,o,p,q], mustAlias:[n], notMustAlias:[i,o,p,q]},"
+								+ "{allocId:2, mayAlias:[n,o,p,q], notMayAlias:[i], mustAlias:[n,o,p,q], notMustAlias:[i]}");
+	}
+
+	public static void main(String[] args) {
+		Recursion1 r1 = new Recursion1();
+		r1.test();
 	}
 }
