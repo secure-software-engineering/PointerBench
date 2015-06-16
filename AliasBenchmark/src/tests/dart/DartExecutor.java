@@ -23,9 +23,9 @@ import soot.jimple.Stmt;
 import soot.options.Options;
 import tests.AliasTest;
 
-public class DartTest extends Test{
+public class DartExecutor extends Test{
 
-	public DartTest(String testCase) {
+	public DartExecutor(String testCase) {
 		super(testCase);
 	}
 

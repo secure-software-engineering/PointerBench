@@ -25,9 +25,9 @@ import tests.AliasTest;
 import tests.dart.DartEvaluator;
 import tests.manu.ManuEvaluator;
 
-public class YanTest extends Test{
+public class YanExecutor extends Test{
 
-	public YanTest(String testCase) {
+	public YanExecutor(String testCase) {
 		super(testCase);
 	}
 

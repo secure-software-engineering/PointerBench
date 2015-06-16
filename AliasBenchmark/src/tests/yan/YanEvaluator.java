@@ -20,4 +20,9 @@ public class YanEvaluator extends Evaluator{
 		return analysis.mayAlias(l, null, method, testVariable, null, method);
 	}
 
+	@Override
+	protected int getPointsToSize() {
+		return -1;
+	}
+
 }

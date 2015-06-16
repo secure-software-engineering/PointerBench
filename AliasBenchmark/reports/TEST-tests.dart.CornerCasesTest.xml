@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="mac-spaeth.sit.fraunhofer.de" name="tests.dart.CornerCasesTest" skipped="0" tests="8" time="7.364" timestamp="2015-06-16T11:57:14">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/Applications/eclipse-luna/plugins/org.eclipse.pde.build_3.9.0.v20140415-2029/templates//" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/classes" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/Applications/eclipse-luna/plugins/org.apache.ant_1.9.2.v201404171502" />
+    <property name="java.runtime.version" value="1.7.0_51-b13" />
+    <property name="user.name" value="spaeth" />
+    <property name="user.language" value="de" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib" />
+    <property name="ant.project.default-target" value="compile" />
+    <property name="ant.project.name" value="soot-infoflow" />
+    <property name="java.version" value="1.7.0_51" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="DE" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/experiments.xml" />
+    <property name="os.version" value="10.10.3" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="24.51-b03" />
+    <property name="ant.file.soot-infoflow" value="/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/experiments.xml" />
+    <property name="ant.library.dir" value="/Applications/eclipse-luna/plugins/org.apache.ant_1.9.2.v201404171502/lib" />
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="eclipse.pdebuild.scripts" value="/Applications/eclipse-luna/plugins/org.eclipse.pde.build_3.9.0.v20140415-2029/scripts//" />
+    <property name="user.home" value="/Users/spaeth" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="/Users/spaeth/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner tests.dart.CornerCasesTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/reports/TEST-tests.dart.CornerCasesTest.xml crashfile=/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/junitvmwatcher4196434732650970322.properties propsfile=/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/junit5081372271426393068.properties" />
+    <property name="java.class.path" value="/Users/spaeth/Documents/workspace/builds/soot-trunk.jar:/Users/spaeth/Documents/workspace/builds/dart.jar:/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/bin:/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/lib/junit.jar:/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark/lib/org.hamcrest.core_1.3.0.jar:/Applications/eclipse-luna/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant-launcher.jar:/Applications/eclipse-luna/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant.jar:/Applications/eclipse-luna/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant-junit.jar:/Applications/eclipse-luna/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant-junit4.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.2 compiled on July 8 2013" />
+    <property name="ant.file.type.soot-infoflow" value="file" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="eclipse.pdebuild.home" value="/Applications/eclipse-luna/plugins/org.eclipse.pde.build_3.9.0.v20140415-2029/.//" />
+    <property name="java.io.tmpdir" value="/var/folders/61/20qsh7_j6_ncnywwtd50d_qm0000gp/T/" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="os.arch" value="x86_64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+    <property name="java.ext.dirs" value="/Users/spaeth/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="user.dir" value="/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark" />
+    <property name="dart.jar" value="/Users/spaeth/Documents/workspace/builds/dart.jar" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="soot.jar" value="/Users/spaeth/Documents/workspace/builds/soot-trunk.jar" />
+    <property name="basedir" value="/Users/spaeth/Documents/DART-related/alias-benchmark/AliasBenchmark" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="/Applications/eclipse-luna/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant.jar" />
+    <property name="file.encoding" value="US-ASCII" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="ant.project.invoked-targets" value="reporttests" />
+  </properties>
+  <testcase classname="tests.dart.CornerCasesTest" name="contextSensitivty1" time="2.458" />
+  <testcase classname="tests.dart.CornerCasesTest" name="contextSensitivty2" time="2.169" />
+  <testcase classname="tests.dart.CornerCasesTest" name="contextSensitivty3" time="0.759" />
+  <testcase classname="tests.dart.CornerCasesTest" name="flowSensitivty1" time="0.436" />
+  <testcase classname="tests.dart.CornerCasesTest" name="strongUpdate1" time="0.352" />
+  <testcase classname="tests.dart.CornerCasesTest" name="accessPath1" time="0.398" />
+  <testcase classname="tests.dart.CornerCasesTest" name="objectSensitivty1" time="0.378" />
+  <testcase classname="tests.dart.CornerCasesTest" name="objectSensitivty2" time="0.354" />
+  <system-out><![CDATA[Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.1 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("b", "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]},{allocId:2, mayAlias:[a], notMayAlias:[b], mustAlias:[a], notMustAlias:[b]}") for variable b
+	Allocation site $r1 = new benchmark.objects.A -> alias: [a], not alias: [b]
+	Allocation site $r0 = new benchmark.objects.A -> alias: [a, b], not alias: []
+
+=========RESULTS FOR  cornerCases.ContextSensitivity1========
+GT:2,[a, b]
+FN:0,[]
+FP:0,[]
+PTSGT:2
+REPORTED:2
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("b", "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]},{allocId:2, mayAlias:[a], notMayAlias:[b], mustAlias:[a], notMustAlias:[b]}") for variable b
+	Allocation site $r1 = new benchmark.objects.A -> alias: [a], not alias: [b]
+	Allocation site $r0 = new benchmark.objects.A -> alias: [a, b], not alias: []
+
+=========RESULTS FOR  cornerCases.ContextSensitivity2========
+GT:2,[a, b]
+FN:0,[]
+FP:0,[]
+PTSGT:2
+REPORTED:2
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("b", "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]},{allocId:2, mayAlias:[a], notMayAlias:[b], mustAlias:[a], notMustAlias:[b]}") for variable b
+	Allocation site $r1 = new benchmark.objects.A -> alias: [a], not alias: [b]
+	Allocation site $r0 = new benchmark.objects.A -> alias: [b, a], not alias: []
+
+=========RESULTS FOR  cornerCases.ContextSensitivity3========
+GT:2,[b, a]
+FN:0,[]
+FP:0,[]
+PTSGT:2
+REPORTED:2
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("b", "{allocId:1, mayAlias:[b], notMayAlias:[a], mustAlias:[b], notMustAlias:[a]}") for variable b
+	Allocation site $r1 = new benchmark.objects.A -> alias: [b], not alias: [a]
+
+=========RESULTS FOR  cornerCases.FlowSensitivity1========
+GT:1,[b]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("x", "{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[x,y], notMustAlias:[a,b]}") for variable x
+	Allocation site $r1 = new benchmark.objects.B -> alias: [y, x], not alias: [a, b]
+
+=========RESULTS FOR  cornerCases.StrongUpdate1========
+GT:2,[y, x]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("x", "{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[a.f,b.f], notMustAlias:[a,b]}") for variable x
+	Allocation site $r0 = new benchmark.objects.A -> alias: [y, x], not alias: [b, a]
+
+=========RESULTS FOR  cornerCases.AccessPath1========
+GT:2,[x, y]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("b4", "{allocId:1, mayAlias:[b4,b2], notMayAlias:[a1,a2,b1,b3], mustAlias:[b4,b2], notMustAlias:[a1,a2,b1,b3]}") for variable b4
+	Allocation site $r1 = new benchmark.objects.B -> alias: [b2, b4], not alias: [a2, a1, b1, b3]
+
+=========RESULTS FOR  cornerCases.ObjectSensitivity1========
+GT:2,[b2, b4]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke <benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)>("b4", "{allocId:1, mayAlias:[b4,b2], notMayAlias:[a,b1,b3], mustAlias:[b4,b2], notMustAlias:[a,b1,b3]}") for variable b4
+	Allocation site $r1 = new benchmark.objects.B -> alias: [b4, b2], not alias: [b1, b3, a]
+
+=========RESULTS FOR  cornerCases.ObjectSensitivity2========
+GT:2,[b2, b4]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

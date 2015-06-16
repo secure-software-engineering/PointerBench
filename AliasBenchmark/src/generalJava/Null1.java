@@ -2,6 +2,7 @@ package generalJava;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import benchmark.objects.B;
 
 /*
  * @testcase Null1
@@ -16,8 +17,10 @@ public class Null1 {
 	public static void main(String[] args) {
 
 		// No allocation site
-		A a = null;
-		A b = a;
-		Benchmark.test("b", "");
+		A h = new A();		
+		B a = h.getH();
+		B b = a;
+		Benchmark.test("b", "{NULLALLOC, mayAlias:[], notMayAlias:[b,a], mustAlias:[b,a], notMustAlias:[i]}");
+		Benchmark.use(b);
 	}
 }

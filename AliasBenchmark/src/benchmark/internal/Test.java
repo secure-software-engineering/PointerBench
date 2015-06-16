@@ -120,43 +120,33 @@ public abstract class Test {
 		Options.v().set_whole_program(true);
 		Options.v().setPhaseOption("jb", "use-original-names:true");
 		Options.v().setPhaseOption("cg.spark", "on");
-		Options.v().setPhaseOption("cg.spark", "verbose:true");
 		Options.v().set_output_format(Options.output_format_none);
 		String userdir = System.getProperty("user.dir");
 		String sootCp = userdir + "/bin";
-		if(includeJDK()){
-			String javaHome = System.getProperty("java.home");
-//			System.out.println(hjavaHome);
-//			sootCp += ":"+javaHome + ":/lib/jre.jar:"+javaHome+"/lib/rt.jar:"+javaHome+"/lib/jce.jar";
-			Options.v().set_prepend_classpath(true);
-			Options.v().setPhaseOption("cg", "trim-clinit:false");
-			Options.v().set_no_bodies_for_excluded(true);
-			Options.v().set_allow_phantom_refs(true);
-			
-			List<String> includeList = new LinkedList<String>();
-			includeList.add("java.lang.*");
-			includeList.add("java.util.*");
-			includeList.add("java.io.*");
-			includeList.add("sun.misc.*");
-			includeList.add("java.net.*");
-			includeList.add("javax.servlet.*");
-			includeList.add("javax.crypto.*");
+		Options.v().set_prepend_classpath(true);
+		Options.v().setPhaseOption("cg", "trim-clinit:false");
+		Options.v().set_no_bodies_for_excluded(true);
+		Options.v().set_allow_phantom_refs(true);
+		
+		List<String> includeList = new LinkedList<String>();
+		includeList.add("java.lang.*");
+		includeList.add("java.util.*");
+		includeList.add("java.io.*");
+		includeList.add("sun.misc.*");
+		includeList.add("java.net.*");
+		includeList.add("javax.servlet.*");
+		includeList.add("javax.crypto.*");
 
-			includeList.add("android.*");
-			includeList.add("org.apache.http.*");
+		includeList.add("android.*");
+		includeList.add("org.apache.http.*");
 
-			includeList.add("de.test.*");
-			includeList.add("soot.*");
-			includeList.add("com.example.*");
-			includeList.add("libcore.icu.*");
-			includeList.add("securibench.*");
-			Options.v().set_include(includeList);
-			
-		} else{
-			Options.v().set_no_bodies_for_excluded(true);
-			Options.v().set_allow_phantom_refs(true);
-//			Options.v().setPhaseOption("cg", "all-reachable:true");
-		}
+		includeList.add("de.test.*");
+		includeList.add("soot.*");
+		includeList.add("com.example.*");
+		includeList.add("libcore.icu.*");
+		includeList.add("securibench.*");
+		Options.v().set_include(includeList);
+	
 		Options.v().set_soot_classpath(sootCp);
 		Options.v().set_main_class(getMainClass());
 		
@@ -175,11 +165,6 @@ public abstract class Test {
 	private String getMainClass() {
 		return mainClass;
 	}
-
-	private boolean includeJDK() {
-		return false;
-	}
-
 	
 	protected abstract void evaluate(QueryInfo queryInfo);
 }

@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import soot.Local;
+import soot.SootClass;
 import soot.SootMethod;
 import soot.jimple.Stmt;
 import tests.AliasTest;

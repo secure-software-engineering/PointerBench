@@ -13,6 +13,7 @@ import alias.Pair;
 import com.google.common.collect.Sets;
 
 import soot.Local;
+import soot.PointsToSet;
 import soot.SootMethod;
 import soot.jimple.Stmt;
 import soot.jimple.infoflow.solver.cfg.InfoflowCFG;
@@ -25,8 +26,6 @@ public abstract class Evaluator {
 	protected Map<String, AliasInfo> allocationSites;
 	protected AliasFinder dart;
 	protected InfoflowCFG cfg;
-	private Set<Local> falseNegativesPairs = new HashSet<>();
-	private Set<Local> falsePositivesPairs = new HashSet<>();
 
 	public Evaluator(QueryInfo queryInfo) {
 		method = queryInfo.getMethod();
@@ -37,9 +36,13 @@ public abstract class Evaluator {
 
 
 	public void evaluateAlias(){
+		Set<Local> falseNegativesPairs = new HashSet<>();
+		Set<Local> falsePositivesPairs = new HashSet<>();
+		Set<Local> gt = new HashSet<>();
 		for(String k : allocationSites.keySet()){
 			AliasInfo aliasInfo = allocationSites.get(k);
 			for(Local l: aliasInfo.getAliases()){
+				gt.add(l);
 				if(!alias(l)){
 					falseNegativesPairs.add(l);
 				};
@@ -63,8 +66,28 @@ public abstract class Evaluator {
 				falsePositivesPairs.add(l);
 			};
 		};
-		
-		assertTrue( "There are " + falseNegativesPairs + " False Negatives and " +falsePositivesPairs + " False Positives",falseNegativesPairs.size() == 0 && falsePositivesPairs.size() == 0);
+		int pointsToSize = getPointsToSize();	
+		int expected = computeExecpectedPointsToSize();
+		System.out.println("=========RESULTS FOR  "+ method.getDeclaringClass().getName() + "========");
+		System.out.println("GT:"+gt.size() +"," +gt );
+		System.out.println("FN:"+falseNegativesPairs.size()+ "," + falseNegativesPairs);
+		System.out.println("FP:"+falsePositivesPairs.size()+ "," + falsePositivesPairs);
+		if(pointsToSize != -1){
+			System.out.println("PTSGT:"+expected );
+			System.out.println("REPORTED:"+pointsToSize );
+		}
+		assertTrue((falseNegativesPairs.size() == 0 ? "":"FN: " + falseNegativesPairs )+ " " +(falsePositivesPairs.size() == 0 ?"" : "FP:" + falsePositivesPairs) +(pointsToSize == -1 ? "" :" Reported number of allocation site: " + pointsToSize + ", expected: " + expected ),falseNegativesPairs.size() == 0 && falsePositivesPairs.size() == 0 && (pointsToSize == -1 ? true : expected == pointsToSize));
 	}
+	private int computeExecpectedPointsToSize() {
+		int counter = 0;
+		for(String key : allocationSites.keySet()){
+			if(!key.equals("NULLALLOC"))
+				counter++;
+		}
+		return counter;
+	}
+
+
 	protected abstract boolean alias(Local l);
+	protected abstract int getPointsToSize();
 }

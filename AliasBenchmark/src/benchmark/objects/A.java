@@ -20,7 +20,9 @@ public class A {
 	public B getF() {
 		return f;
 	}
-
+	public B getH() {
+		return h;
+	}
 	public B id(B b) {
 		return b;
 	}

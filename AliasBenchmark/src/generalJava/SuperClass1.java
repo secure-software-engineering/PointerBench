@@ -21,10 +21,11 @@ public class SuperClass1 {
 
 		P p = new P(a);
 		p.alias(b);
-
+		A h = p.getA();
 		Benchmark
-				.test("b",
-						"{allocId:1, mayAlias:[b,a], notMayAlias:[p], mustAlias:[b,a], notMustAlias:[p]}");
+				.test("h",
+						"{allocId:1, mayAlias:[b], notMayAlias:[a,p], mustAlias:[b,a], notMustAlias:[p]}");
+		Benchmark.use(h);
 	}
 
 }

@@ -24,7 +24,7 @@ public class OuterClass1 {
 		}
 
 		public void alias(A x) {
-			x = a;
+			this.a = x;
 		}
 	}
 
@@ -35,10 +35,10 @@ public class OuterClass1 {
 
 		InnerClass i = new InnerClass(a);
 		i.alias(b);
-
+		A h = i.a;
 		Benchmark
-				.test("b",
-						"{allocId:1, mayAlias:[b,a], notMayAlias:[i], mustAlias:[b,a], notMustAlias:[i]}");
+				.test("h",
+						"{allocId:1, mayAlias:[b,b], notMayAlias:[i,a], mustAlias:[b,a], notMustAlias:[i]}");
 	}
 
 	private static void main(String[] args) {

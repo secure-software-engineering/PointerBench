@@ -1,0 +1,186 @@
+<html xmlns:string="xalan://java.lang.String" xmlns:lxslt="http://xml.apache.org/xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Standard Output from BasicTest</title>
+</head>
+<body>
+<pre>Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.2 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("b", "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}") for variable b
+	Allocation site $r0 = new benchmark.objects.A -&gt; alias: [b, a], not alias: []
+
+=========RESULTS FOR  basic.SimpleAlias1========
+GT:2,[b, a]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("node", "{allocId:1, mayAlias:[node], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[i,o,p,q]}") for variable node
+	Allocation site $r0 = new basic.Loops1$N -&gt; alias: [node], not alias: [p, o, i, q]
+
+=========RESULTS FOR  basic.Loops1========
+GT:1,[node]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("b", "{allocId:1, mayAlias:[b,x], notMayAlias:[], mustAlias:[b,x], notMustAlias:[]}") for variable b
+	Allocation site $r0 = new benchmark.objects.A -&gt; alias: [x, b], not alias: []
+
+=========RESULTS FOR  basic.Parameter1========
+GT:2,[x, b]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("b", "{allocId:1, mayAlias:[b,x], notMayAlias:[], mustAlias:[b,x], notMustAlias:[]}") for variable b
+	Allocation site $r0 = new benchmark.objects.A -&gt; alias: [b, x], not alias: []
+
+=========RESULTS FOR  basic.Parameter2========
+GT:2,[x, b]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("b", "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}") for variable b
+	Allocation site $r0 = new benchmark.objects.A -&gt; alias: [b, a], not alias: []
+
+=========RESULTS FOR  basic.ReturnValue1========
+GT:2,[b, a]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("b", "{allocId:1, mayAlias:[a,b], notMayAlias:[rv2], mustAlias:[a,b], notMustAlias:[rv2]}") for variable b
+	Allocation site $r0 = new benchmark.objects.A -&gt; alias: [a, b], not alias: [rv2]
+
+=========RESULTS FOR  basic.ReturnValue2========
+GT:2,[a, b]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("x", "{allocId:1, mayAlias:[x], notMayAlias:[a,b,y], mustAlias:[x], notMustAlias:[a,b,y]}") for variable x
+	Allocation site $r1 = new benchmark.objects.B -&gt; alias: [x], not alias: [y, b, a]
+
+=========RESULTS FOR  basic.ReturnValue3========
+GT:1,[x]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:2
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("x", "{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[x,y], notMustAlias:[a,b]}") for variable x
+	Allocation site $r2 = new benchmark.objects.B -&gt; alias: [y, x], not alias: [b, a]
+
+=========RESULTS FOR  basic.Method1========
+GT:2,[y, x]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:3
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("x", "{allocId:1, mayAlias:[x,y], notMayAlias:[a,b,m2], mustAlias:[x,y], notMustAlias:[a,b,m2]}") for variable x
+	Allocation site $r2 = new benchmark.objects.B -&gt; alias: [x, y], not alias: [m2, a, b]
+
+=========RESULTS FOR  basic.Method2========
+GT:2,[x, y]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:3
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("a", "{allocId:1, mayAlias:[a], notMayAlias:[i,b], mustAlias:[a], notMustAlias:[i,b]},{allocId:2, mayAlias:[a,b], notMayAlias:[i], mustAlias:[a], notMustAlias:[i,b]}") for variable a
+	Allocation site $r1 = new benchmark.objects.A -&gt; alias: [b, a], not alias: [i]
+	Allocation site $r0 = new benchmark.objects.A -&gt; alias: [a], not alias: [i, b]
+
+=========RESULTS FOR  basic.Branching1========
+GT:2,[b, a]
+FN:0,[]
+FP:0,[]
+PTSGT:2
+REPORTED:2
+Warning: java.lang.invoke.LambdaMetafactory is a phantom class!
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 0.0 seconds.
+[Spark] Type masks in 0.0 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 0.0 seconds.
+[Spark] Solution found in 0.0 seconds.
+Query at stmt staticinvoke &lt;benchmark.internal.Benchmark: void test(java.lang.String,java.lang.String)&gt;("n", "{allocId:1, mayAlias:[n], notMayAlias:[i,o,p,q], mustAlias:[n], notMustAlias:[i,o,p,q]}") for variable n
+	Allocation site $r0 = new basic.Recursion1$N -&gt; alias: [n], not alias: [o, p, q]
+
+=========RESULTS FOR  basic.Recursion1========
+GT:1,[n]
+FN:0,[]
+FP:0,[]
+PTSGT:1
+REPORTED:1
+</pre>
+</body>
+</html>

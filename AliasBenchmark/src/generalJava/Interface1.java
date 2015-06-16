@@ -25,8 +25,12 @@ public class Interface1 {
 		H h = new H();
 		g.foo(a);
 		A c = h.foo(b);
+		
 		Benchmark
 				.test("c",
 						"{allocId:1, mayAlias:[c,b], notMayAlias:[a,g,h], mustAlias:[c,b], notMustAlias:[a,g,h]}");
+
+		Benchmark.use(c);
 	}
+
 }

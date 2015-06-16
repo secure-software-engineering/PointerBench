@@ -1,25 +1,17 @@
 package tests.dart;
 
-import heros.solver.Pair;
-
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Set;
 
+import heros.solver.Pair;
 import soot.Local;
 import soot.SootMethod;
 import soot.Unit;
-import soot.jimple.Stmt;
 import soot.jimple.infoflow.solver.cfg.BackwardsInfoflowCFG;
 import soot.jimple.infoflow.solver.cfg.InfoflowCFG;
 import soot.jimple.toolkits.ide.icfg.BiDiInterproceduralCFG;
-import tests.AliasTest;
-import benchmark.internal.AliasInfo;
 import benchmark.internal.Evaluator;
 import benchmark.internal.QueryInfo;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
 import dart.AliasFinder;
 import dart.DartContext;
 import dart.accesspath.AccessPath;
@@ -31,41 +23,6 @@ public class DartEvaluator extends Evaluator{
 		super(queryInfo);
 	}
 
-//	public void evaluateAlias() {
-//		System.out.println(method.getActiveBody());
-//		createDart();
-//		AliasResults aliasResults = dart.findAliasAtStmt(new AccessPath(testVariable), testStmt, new AllCallersRequester<BiDiInterproceduralCFG<Unit,SootMethod>>(cfg));
-//		
-//		Multimap<Unit, Local> dartResults = createAllocationSiteMapFromDart(aliasResults);
-//		HashMultimap<Unit, Local> expectedResults = createAllocationSiteMap();
-//		if(!dartResults.equals(expectedResults)){
-//			throw new RuntimeException("Was "+ dartResults +" but expected " + expectedResults);
-//		}
-//	}
-
-	private HashMultimap<Unit, Local> createAllocationSiteMap() {
-		HashMultimap<Unit, Local> out = HashMultimap.create();
-		for(String alloc : allocationSites.keySet()){
-			AliasInfo values = allocationSites.get(alloc);
-			Set<Local> aliases = values.getAliases();
-			out.putAll(values.getStmt(), aliases);
-		}
-		return out;
-	}
-
-	private Multimap<Unit,Local> createAllocationSiteMapFromDart(AliasResults aliasResults) {
-		HashMultimap<Unit, Local> out = HashMultimap.create();
-		for(Pair<Unit, AccessPath> alloc : aliasResults.keySet()){
-			Unit allocationSite = alloc.getO2().getSourceStmt();
-			Set<AccessPath> values =aliasResults.get(alloc);
-			for(AccessPath v: values){
-				if(v.getFieldCount() < 1 && !v.getBase().toString().startsWith("$")){
-					out.put(allocationSite, v.getBase());
-				}
-			}
-		}
-		return out;
-	}
 
 	private void createDart() {
 		if(dart != null)
@@ -94,5 +51,19 @@ public class DartEvaluator extends Evaluator{
 			}
 		}
 		return false;
+	}
+
+
+	@Override
+	protected int getPointsToSize() {
+		createDart();
+		AliasResults res1 = dart.findAliasAtStmt(testVariable, null, testStmt, new AllCallersRequester<BiDiInterproceduralCFG<Unit,SootMethod>>(cfg));
+		if(res1 == null)
+			return 0;
+		Set<Unit> allocSites = new HashSet<>();
+		for(Pair<Unit,AccessPath> o : res1.keySet()){
+			allocSites.add(o.getO2().getSourceStmt());
+		}
+		return allocSites.size();
 	}
 }

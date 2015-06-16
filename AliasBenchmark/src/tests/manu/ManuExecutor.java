@@ -24,9 +24,9 @@ import soot.options.Options;
 import tests.AliasTest;
 import tests.dart.DartEvaluator;
 
-public class ManuTest extends Test{
+public class ManuExecutor extends Test{
 
-	public ManuTest(String testCase) {
+	public ManuExecutor(String testCase) {
 		super(testCase);
 	}
 

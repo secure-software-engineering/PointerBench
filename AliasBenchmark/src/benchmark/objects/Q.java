@@ -10,6 +10,10 @@ public class Q {
 	}
 
 	public void alias(A x) {
-		x = a;
+		this.a = x;
+	}
+	
+	public A getA(){
+		return a;
 	}
 }
