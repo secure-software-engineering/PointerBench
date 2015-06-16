@@ -1,7 +1,6 @@
 package collections;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
@@ -18,7 +17,7 @@ public class Map1 {
 
 	public static void main(String[] args) {
 
-		Map<String, A> map = new HashMap<String, A>();
+		HashMap<String, A> map = new HashMap<String, A>();
 		A a = new A();
 		Benchmark.alloc(1);
 		A b = new A();
@@ -27,6 +26,6 @@ public class Map1 {
 		A c = map.get("second");
 		Benchmark
 				.test("c",
-						"{allocId:1, mayAlias:[c,b,map], notMayAlias:[a], mustAlias:[c,b,map], notMustAlias:[a]}");
+						"{allocId:1, mayAlias:[c,b], notMayAlias:[a,map], mustAlias:[c,b], notMustAlias:[a,map]}");
 	}
 }

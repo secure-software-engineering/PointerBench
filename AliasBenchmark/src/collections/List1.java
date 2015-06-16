@@ -1,7 +1,6 @@
 package collections;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
@@ -11,14 +10,14 @@ import benchmark.objects.A;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description List
+ * @description ArrayList
  * 
  */
 public class List1 {
 
 	public static void main(String[] args) {
 
-		List<A> list = new ArrayList<A>();
+		ArrayList<A> list = new ArrayList<A>();
 		A a = new A();
 		Benchmark.alloc(1);
 		A b = new A();
@@ -26,7 +25,7 @@ public class List1 {
 		list.add(b);
 		A c = list.get(1);
 		Benchmark
-				.test("c",
-						"{allocId:1, mayAlias:[c,b,list], notMayAlias:[a], mustAlias:[c,b,list], notMustAlias:[a]}");
+				.test("b",
+						"{allocId:1, mayAlias:[c,b], notMayAlias:[a,list], mustAlias:[c,b], notMustAlias:[a,list]}");
 	}
 }

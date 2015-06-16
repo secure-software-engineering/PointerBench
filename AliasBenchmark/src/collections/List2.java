@@ -1,29 +1,31 @@
 package collections;
 
+import java.util.LinkedList;
+
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 
 /*
- * @testcase Array1
+ * @testcase List2
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description Array alias
+ * @description LinkedList
  * 
  */
-public class Array1 {
+public class List2 {
 
 	public static void main(String[] args) {
 
-		A[] array = new A[] {};
+		LinkedList<A> list = new LinkedList<A>();
 		A a = new A();
 		Benchmark.alloc(1);
 		A b = new A();
-		array[0] = a;
-		array[1] = b;
-		A c = array[1];
+		list.add(a);
+		list.add(b);
+		A c = list.get(1);
 		Benchmark
-				.test("c",
-						"{allocId:1, mayAlias:[c,b], notMayAlias:[a,array], mustAlias:[c,b], notMustAlias:[a,array]}");
+				.test("b",
+						"{allocId:1, mayAlias:[c,b], notMayAlias:[a,list], mustAlias:[c,b], notMustAlias:[a,list]}");
 	}
 }

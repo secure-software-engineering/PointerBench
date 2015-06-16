@@ -7,10 +7,10 @@ import benchmark.internal.Benchmark;
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
- * @description The analysis must support loop constructs. No allocation site in N
+ * @description The analysis must support loop constructs. Allocation site in N
  * 
  */
-public class Loops1 {
+public class Loops2 {
 
 	public class N {
 		public String value = "";
@@ -18,6 +18,13 @@ public class Loops1 {
 
 		public N() {
 			next = null;
+		}
+
+		public void add(String value) {
+			Benchmark.alloc(2);
+			N n = new N();
+			n.value = value;
+			this.next = n;
 		}
 	}
 
@@ -37,11 +44,12 @@ public class Loops1 {
 
 		Benchmark
 				.test("node",
-						"{allocId:1, mayAlias:[node], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[i,o,p,q]}");
+						"{allocId:1, mayAlias:[node], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[i,o,p,q]},"
+								+ "{allocId:2, mayAlias:[node,o,p,q], notMayAlias:[i], mustAlias:[node,o,p,q], notMustAlias:[i]}");
 	}
 
 	public static void main(String[] args) {
-		Loops1 l1 = new Loops1();
+		Loops2 l1 = new Loops2();
 		l1.test();
 	}
 }

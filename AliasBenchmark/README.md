@@ -6,7 +6,7 @@ Basic
 	Parameters (1 static, 2 not static)		2
 	Method alias (1 static, 2 not static)	2
 	Return value (1 static, 2 not static)	2
-	Loops									1	
+	Loops (1 one alloc site, 2 two as)		2
 	Recursion								1	
 
 General Java
@@ -22,13 +22,14 @@ Corner cases
 	Object sensitive (1 caller, 2 receiver)	2
 	Flow sensitive							1
 	Heap sensitive							-		-> TODO leave that for the moment
-	Context sensitive 						1		-> TODO must alias?						-> LISA 2-3 CS
+	Context sensitive 						1		-> TODO must alias?				
 	Strong updates							1
 
 Collections
 	Arrays (1 element, 2 slice)				2
-	Lists									1
-	Maps									1
+	Lists (ArrayList, LinkedList)			2
+	Maps (HashMap)							1
+	Sets (HashSet)							1
 	
 	
 

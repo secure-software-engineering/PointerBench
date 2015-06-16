@@ -21,7 +21,6 @@ public class Recursion1 {
 
 		public N(String value) {
 			this.value = value;
-			Benchmark.alloc(2);
 			next = null;
 		}
 	}
@@ -47,8 +46,7 @@ public class Recursion1 {
 
 		Benchmark
 				.test("n",
-						"{allocId:1, mayAlias:[n], notMayAlias:[i,o,p,q], mustAlias:[n], notMustAlias:[i,o,p,q]},"
-								+ "{allocId:2, mayAlias:[n,o,p,q], notMayAlias:[i], mustAlias:[n,o,p,q], notMustAlias:[i]}");
+						"{allocId:1, mayAlias:[n], notMayAlias:[i,o,p,q], mustAlias:[n], notMustAlias:[i,o,p,q]}");
 	}
 
 	public static void main(String[] args) {

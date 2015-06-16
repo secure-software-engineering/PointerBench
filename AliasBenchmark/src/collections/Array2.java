@@ -24,6 +24,6 @@ public class Array2 {
 		A[] slice = array[1];
 		Benchmark
 				.test("slice",
-						"{allocId:1, mayAlias:[slice,array], notMayAlias:[a,b], mustAlias:[slice,array], notMustAlias:[a,b]}");
+						"{allocId:1, mayAlias:[slice], notMayAlias:[a,b,array], mustAlias:[slice], notMustAlias:[a,b,array]}");
 	}
 }
