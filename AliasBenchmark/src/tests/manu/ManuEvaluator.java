@@ -8,6 +8,8 @@ import soot.jimple.spark.ondemand.AllocAndContextSet;
 import soot.jimple.spark.ondemand.DemandCSPointsTo;
 import soot.jimple.spark.ondemand.WrappedPointsToSet;
 import soot.jimple.spark.sets.EmptyPointsToSet;
+import tests.AliasTest;
+import tests.yan.AccessPathNotSupportedException;
 import alias.ManuMayAliasAnalysis;
 import alias.Util;
 
@@ -19,12 +21,12 @@ public class ManuEvaluator extends Evaluator{
 
 
 	@Override
-	protected boolean alias(Local l) {
+	protected boolean alias(String l) {
 		DemandCSPointsTo pta = DemandCSPointsTo.makeWithBudget(75000, 10, false);
-		PointsToSet res1 = pta.reachingObjects(l);
+		PointsToSet res1 = pta.reachingObjects(parse(l));
 		if(res1 == null || res1.isEmpty())
 			return false;
-		PointsToSet res2 = pta.reachingObjects(testVariable);
+		PointsToSet res2 = pta.reachingObjects(parse(testVariable));
 		if(res2 == null || res2.isEmpty())
 			return false;
 		
@@ -32,10 +34,18 @@ public class ManuEvaluator extends Evaluator{
 	}
 
 
+	private Local parse(String var) {
+		if(var.contains(".")){
+			throw new AccessPathNotSupportedException("AccessPath are not supported");
+		}
+		return AliasTest.findSingleLocal(this.method.getActiveBody().getLocals(), var);
+	}
+
+
 	@Override
 	protected int getPointsToSize() {
 		DemandCSPointsTo pta = DemandCSPointsTo.makeWithBudget(75000, 10, false);
-		PointsToSet other = pta.reachingObjects(testVariable);
+		PointsToSet other = pta.reachingObjects(parse(testVariable));
 		
 		if (other instanceof AllocAndContextSet) {
 		      return ((AllocAndContextSet) other).size();

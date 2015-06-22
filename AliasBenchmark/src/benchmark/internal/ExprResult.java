@@ -2,24 +2,22 @@ package benchmark.internal;
 
 import java.util.Set;
 
-import soot.Local;
-
 public class ExprResult {
-	private Set<Local> falsePositive;
-	private Set<Local> falseNegatives;
+	private Set<String> falsePositive;
+	private Set<String> falseNegatives;
 	private int pointsToSize;
 
-	public ExprResult(Set<Local> falsePositive, Set<Local> falseNegatives, int pointsToSize){
+	public ExprResult(Set<String> falsePositive, Set<String> falseNegatives, int pointsToSize){
 		this.falsePositive = falsePositive;
 		this.falseNegatives = falseNegatives;
 		this.pointsToSize = pointsToSize;
 	}
 
-	public Set<Local> getFalsePositive() {
+	public Set<String> getFalsePositive() {
 		return falsePositive;
 	}
 
-	public Set<Local> getFalseNegatives() {
+	public Set<String> getFalseNegatives() {
 		return falseNegatives;
 	}
 

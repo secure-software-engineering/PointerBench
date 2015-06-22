@@ -1,5 +1,7 @@
 package benchmark.internal;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,12 +11,19 @@ import soot.jimple.Stmt;
 public class AliasInfo {
 
 	private Stmt stmt;
-	private Set<Local> alias = new HashSet<>();
-	private Set<Local> notAlias = new HashSet<>();
+	private Set<String> alias;
+	private Set<String> notAlias;
 
-	public AliasInfo(Set<Local> alias, Set<Local> notAlias) {
-		this.alias = alias;
-		this.notAlias = notAlias;
+	public AliasInfo(String mayAlias, String notMayAlias) {
+		this.alias = stringAsSet(mayAlias);
+		this.notAlias = stringAsSet(notMayAlias);
+	}
+
+	private Set<String> stringAsSet(String alias) {
+		if(alias.equals("")){
+			return Collections.emptySet();
+		}
+		return new HashSet<String>(Arrays.asList(alias.split(",")));
 	}
 
 	public AliasInfo(Stmt stmt) {
@@ -29,11 +38,11 @@ public class AliasInfo {
 		return this.stmt;
 	}
 
-	public Set<Local> getAliases(){
+	public Set<String> getAliases(){
 		return alias;
 	}
 	
-	public Set<Local> getNotAliases(){
+	public Set<String> getNotAliases(){
 		return notAlias;
 	}
 	
@@ -43,14 +52,14 @@ public class AliasInfo {
 		sb.append("Allocation site " + stmt);
 		sb.append(" -> alias: [");
 		String prefix = "";
-		for (Local s : alias) {
+		for (String s : alias) {
 			sb.append(prefix);
 			prefix = ", ";
 			sb.append(s);
 		}
 		sb.append("], not alias: [");
 		prefix = "";
-		for (Local s : notAlias) {
+		for (String s : notAlias) {
 			sb.append(prefix);
 			prefix = ", ";
 			sb.append(s);

@@ -42,4 +42,8 @@ public class CornerCasesTest {
 	public void strongUpdate1(){
 		new DartExecutor("cornerCases.StrongUpdate1");
 	}
+	@Test
+	public void strongUpdate2(){
+		new DartExecutor("cornerCases.StrongUpdate2");
+	}
 }

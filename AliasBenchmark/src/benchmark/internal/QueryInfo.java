@@ -1,5 +1,7 @@
 package benchmark.internal;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -17,7 +19,7 @@ public class QueryInfo {
 
 	private Stmt testStmt;
 	private SootMethod method;
-	private Local testVariable;
+	private String testVariable;
 	private static final Pattern TAG_REGEX = Pattern.compile("\\{(.*?)\\}");
 	private static final Pattern TAG_REGEX2 = Pattern.compile("\\[(.*?)\\]");
 
@@ -28,8 +30,8 @@ public class QueryInfo {
 			String results) {
 		this.method = method;
 		this.testStmt = testStmt;
-		this.testVariable = extractSingleLocalFromString(testVariable
-				.substring(1, testVariable.length() - 1));
+		this.testVariable = testVariable
+				.substring(1, testVariable.length() - 1);
 
 		final Matcher matcher = TAG_REGEX.matcher(results);
 		while (matcher.find()) {
@@ -57,15 +59,8 @@ public class QueryInfo {
 		String mayAlias = matcher.group(1);
 		matcher.find();
 		String notMayAlias = matcher.group(1);
-		AliasInfo ai = new AliasInfo(extractLocalsFromString(mayAlias), extractLocalsFromString(notMayAlias));
+		AliasInfo ai = new AliasInfo(mayAlias, notMayAlias);
 		return ai;
-	}
-
-	private Set<Local> extractLocalsFromString(String localsString){
-		return AliasTest.findLocal(this.method.getActiveBody().getLocals(), localsString.split(","));
-	}
-	private Local extractSingleLocalFromString(String localsString){
-		return AliasTest.findSingleLocal(this.method.getActiveBody().getLocals(), localsString);
 	}
 	// Take the fourth and fifth one (must information)
 	private AliasInfo extractMustInformation(String aliasInfo) {
@@ -76,7 +71,7 @@ public class QueryInfo {
 		String mustAlias = matcher.group(1);
 		matcher.find();
 		String notMustAlias = matcher.group(1);
-		AliasInfo ai = new AliasInfo(extractLocalsFromString(mustAlias), extractLocalsFromString(notMustAlias));
+		AliasInfo ai = new AliasInfo(mustAlias, notMustAlias);
 		return ai;
 	}
 
@@ -105,7 +100,7 @@ public class QueryInfo {
 		return testStmt;
 	}
 	
-	public Local getVariable(){
+	public String getVariable(){
 		return testVariable;
 	}
 	
@@ -126,8 +121,8 @@ public class QueryInfo {
 		return counter;
 	}
 
-	public Set<Local> getTruePositives() {
-		Set<Local> out = new HashSet<>();
+	public Set<String> getTruePositives() {
+		Set<String> out = new HashSet<>();
 		for(String key : allocationSites.keySet()){
 			AliasInfo aliasInfo = allocationSites.get(key);
 			out.addAll(aliasInfo.getAliases());

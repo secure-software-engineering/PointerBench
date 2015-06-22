@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -17,11 +18,13 @@ import soot.PointsToSet;
 import soot.SootMethod;
 import soot.jimple.Stmt;
 import soot.jimple.infoflow.solver.cfg.InfoflowCFG;
+import tests.AliasTest;
+import tests.dart.DartEvaluator;
 import dart.AliasFinder;
 
 public abstract class Evaluator {
 	protected SootMethod method;
-	protected Local testVariable;
+	protected String testVariable;
 	protected Stmt testStmt;
 	protected Map<String, AliasInfo> allocationSites;
 	protected AliasFinder dart;
@@ -35,22 +38,23 @@ public abstract class Evaluator {
 		allocationSites = queryInfo.getAllocationSiteInfo();
 		this.queryInfo = queryInfo;
 	}
-
-
+	
 	public ExprResult evaluateAlias(){
-		Set<Local> falseNegativesPairs = new HashSet<>();
-		Set<Local> falsePositivesPairs = new HashSet<>();
-		Set<Local> gt = new HashSet<>();
+		Set<String> falseNegativesPairs = new HashSet<>();
+		Set<String> falsePositivesPairs = new HashSet<>();
+		Set<String> gt = new HashSet<>();
 		for(String k : allocationSites.keySet()){
 			AliasInfo aliasInfo = allocationSites.get(k);
-			for(Local l: aliasInfo.getAliases()){
+			for(String l: aliasInfo.getAliases()){
 				gt.add(l);
 				if(!alias(l)){
 					falseNegativesPairs.add(l);
+					if(this instanceof DartEvaluator)
+						System.out.println(2);
 				};
 			};
 		}
-		Set<Local> notAliasIntersection = null;
+		Set<String> notAliasIntersection = null;
 		for(String k : allocationSites.keySet()){
 			AliasInfo aliasInfo = allocationSites.get(k);
 			if(notAliasIntersection == null){
@@ -60,7 +64,7 @@ public abstract class Evaluator {
 			}
 		}
 		if(notAliasIntersection != null){
-			for(Local l: notAliasIntersection){
+			for(String l: notAliasIntersection){
 				if(alias(l)){
 					falsePositivesPairs.add(l);
 				};
@@ -76,11 +80,11 @@ public abstract class Evaluator {
 			System.out.println("PTSGT:"+expected );
 			System.out.println("REPORTED:"+pointsToSize );
 		}
-		
+//		assertTrue((falseNegativesPairs.size() == 0 ? "":"FN: " + falseNegativesPairs )+ " " +(falsePositivesPairs.size() == 0 ?"" : "FP:" + falsePositivesPairs) +(pointsToSize == -1 ? "" :" Reported number of allocation site: " + pointsToSize + ", expected: " + expected ),falseNegativesPairs.size() == 0 && falsePositivesPairs.size() == 0 && (pointsToSize == -1 ? true : expected == pointsToSize));
 		return new ExprResult(falsePositivesPairs, falseNegativesPairs, pointsToSize);
 	}
 
 
-	protected abstract boolean alias(Local l);
+	protected abstract boolean alias(String l);
 	protected abstract int getPointsToSize();
 }
