@@ -2,7 +2,6 @@ package cornerCases;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
-import benchmark.objects.B;
 
 /*
  * @testcase AccessPath1
@@ -21,10 +20,8 @@ public class AccessPath1 {
 		A b = new A();
 
 		a.f = b.f;
-		B x = a.f;
-		B y = b.f;
 		Benchmark
-				.test("x",
-						"{allocId:1, mayAlias:[x,y], notMayAlias:[a,b], mustAlias:[a.f,b.f], notMustAlias:[a,b]}");
+				.test("b.f",
+						"{allocId:1, mayAlias:[a.f,b.f], notMayAlias:[a,b], mustAlias:[a.f,b.f], notMustAlias:[a,b]}");
 	}
 }

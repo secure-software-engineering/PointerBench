@@ -3,7 +3,7 @@ package basic;
 import benchmark.internal.Benchmark;
 
 /*
- * @testcase Loops1
+ * @testcase Loops2
  * @version 1.0
  * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
  * 
@@ -17,14 +17,8 @@ public class Loops2 {
 		public N next;
 
 		public N() {
-			next = null;
-		}
-
-		public void add(String value) {
 			Benchmark.alloc(2);
-			N n = new N();
-			n.value = value;
-			this.next = n;
+			next = new N();
 		}
 	}
 
@@ -45,8 +39,8 @@ public class Loops2 {
 
 		Benchmark
 				.test("node",
-						"{allocId:1, mayAlias:[node], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[i,o,p,q]},"
-								+ "{allocId:2, mayAlias:[node,o,p,q], notMayAlias:[i], mustAlias:[node,o,p,q], notMustAlias:[i]}");
+						"{allocId:1, mayAlias:[node,n], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[p,q,n]},"+
+						"{allocId:2, mayAlias:[o,p,q], notMayAlias:[n,node], mustAlias:[o], notMustAlias:[p,q]}");
 	}
 
 	public static void main(String[] args) {

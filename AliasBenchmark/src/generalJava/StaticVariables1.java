@@ -19,8 +19,9 @@ public class StaticVariables1 {
 		Benchmark.alloc(1);
 		a = new A();
 		A b = a;
+		A c = a;
 		Benchmark
 				.test("b",
-						"{allocId:1, mayAlias:[b,a], notMayAlias:[], mustAlias:[b,a], notMustAlias:[]}");
+						"{allocId:1, mayAlias:[b,c], notMayAlias:[], mustAlias:[b,c], notMustAlias:[]}");
 	}
 }
