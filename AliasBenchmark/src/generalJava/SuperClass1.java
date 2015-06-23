@@ -24,7 +24,7 @@ public class SuperClass1 {
 		A h = p.getA();
 		Benchmark
 				.test("h",
-						"{allocId:1, mayAlias:[b], notMayAlias:[a,p], mustAlias:[b,a], notMustAlias:[p]}");
+						"{allocId:1, mayAlias:[h,b], notMayAlias:[a,p], mustAlias:[b,a], notMustAlias:[p]}");
 		Benchmark.use(h);
 	}
 
