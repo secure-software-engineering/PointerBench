@@ -8,7 +8,7 @@ import benchmark.objects.A;
 /*
  * @testcase List2
  * @version 1.0
- * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
+ * @author Johannes Späth, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
  * 
  * @description LinkedList
  * 

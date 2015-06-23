@@ -6,7 +6,7 @@ import benchmark.objects.A;
 /*
  * @testcase ContextSensitivity2
  * @version 1.0
- * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
+ * @author Johannes Späth, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
  * 
  * @description Object sensitive alias from caller object (2-CS)
  * 

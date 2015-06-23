@@ -8,7 +8,7 @@ import benchmark.objects.H;
 /*
  * @testcase Interface1
  * @version 1.0
- * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
+ * @author Johannes Späth, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
  * 
  * @description Alias from method in interface
  * 
@@ -25,7 +25,7 @@ public class Interface1 {
 		H h = new H();
 		g.foo(a);
 		A c = h.foo(b);
-		
+
 		Benchmark
 				.test("c",
 						"{allocId:1, mayAlias:[c,b], notMayAlias:[a,g,h], mustAlias:[c,b], notMustAlias:[a,g,h]}");

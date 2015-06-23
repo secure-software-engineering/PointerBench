@@ -6,7 +6,7 @@ import benchmark.objects.A;
 /*
  * @testcase Branching1
  * @version 1.0
- * @author Secure Software Engineering Group (SSE), Fraunhofer Institute SIT
+ * @author Johannes Späth, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
  * 
  * @description Condition. a and b alias on one path, not on the other
  * 
