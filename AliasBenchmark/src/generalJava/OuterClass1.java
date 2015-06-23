@@ -38,7 +38,7 @@ public class OuterClass1 {
 		A h = i.a;
 		Benchmark
 				.test("h",
-						"{allocId:1, mayAlias:[b,b], notMayAlias:[i,a], mustAlias:[b,a], notMustAlias:[i]}");
+						"{allocId:1, mayAlias:[b,h], notMayAlias:[i,a], mustAlias:[b,a], notMustAlias:[i]}");
 	}
 
 	private static void main(String[] args) {
