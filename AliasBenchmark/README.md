@@ -36,9 +36,9 @@ Collections
 
 Notations:
 
-Benchmark.alloc(2);
+Benchmark.alloc(1);
 	Used to mark an allocation site. The allocation site is the next new statement.
-	2 is the id of the allocation site. We refer to it at test
+	1 is the id of the allocation site. We refer to it at test
 	
 Benchmark.test("a.f", "{allocId:1, mayAlias:[b,a.f], notMayAlias:[], mustAlias:[b,x], notMustAlias:[]},
 					 {allocId:2, mayAlias:[a,d], notMayAlias:[c], mustAlias:[a], notMustAlias:[c,d]}");
