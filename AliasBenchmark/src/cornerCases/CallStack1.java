@@ -25,6 +25,6 @@ public class CallStack1 {
 		A b = getA();
 		Benchmark
 				.test("a",
-						"{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
+						"{allocId:1, mayAlias:[a], notMayAlias:[b], mustAlias:[a], notMustAlias:[b]}");
 	}
 }
