@@ -1,10 +1,12 @@
 package tests.yan;
 
-import edu.osu.cse.pa.YanMayAlias;
+import iohoister.analysis.MayAliasAnalysis;
 import soot.Local;
-import tests.AliasTest;
+import test.core.AliasTest;
+import alias.Util;
 import benchmark.internal.Evaluator;
 import benchmark.internal.QueryInfo;
+import edu.osu.cse.pa.YanMayAlias;
 
 public class YanEvaluator extends Evaluator{
 
@@ -24,8 +26,13 @@ public class YanEvaluator extends Evaluator{
 	protected boolean alias(String l) {
 		YanMayAlias analysis = new YanMayAlias();
 		analysis.buildSPG();
-		
-		return analysis.mayAlias(parse(l), null, method, parse(testVariable), null, method);
+		Util.TIME_BUDGET = 5000;
+		Util.aliasStart = System.nanoTime();
+		MayAliasAnalysis.queryCrashed = false;
+		boolean mayAlias = analysis.mayAlias(parse(l), null, method, parse(testVariable), null, method);
+		if(MayAliasAnalysis.queryCrashed)
+			System.out.println("Yan crahsed on " + l );
+		return mayAlias;
 	}
 
 	@Override

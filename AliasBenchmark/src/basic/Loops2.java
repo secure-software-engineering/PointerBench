@@ -5,7 +5,7 @@ import benchmark.internal.Benchmark;
 /*
  * @testcase Loops2
  * @version 1.0
- * @author Johannes Späth, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
+ * @author Johannes Spï¿½th, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
  * 
  * @description The analysis must support loop constructs. Allocation site in N
  * 
@@ -25,7 +25,6 @@ public class Loops2 {
 	private void test() {
 		Benchmark.alloc(1);
 		N node = new N();
-		N n = node;
 
 		int i = 0;
 		while (i < 10) {
@@ -33,14 +32,12 @@ public class Loops2 {
 			i++;
 		}
 
-		N o = n.next;
-		N p = n.next.next;
-		N q = n.next.next.next;
-
+		N o = node.next;
+		N p = node.next.next;
 		Benchmark
 				.test("node",
-						"{allocId:1, mayAlias:[node,n], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[p,q,n]},"
-								+ "{allocId:2, mayAlias:[o,p,q], notMayAlias:[n,node], mustAlias:[o], notMustAlias:[p,q]}");
+						"{allocId:1, mayAlias:[node], notMayAlias:[i,o,p], mustAlias:[node], notMustAlias:[p]},"
+								+ "{allocId:2, mayAlias:[o], notMayAlias:[node], mustAlias:[o], notMustAlias:[p]}");
 	}
 
 	public static void main(String[] args) {

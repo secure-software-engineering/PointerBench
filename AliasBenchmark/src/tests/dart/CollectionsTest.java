@@ -17,6 +17,11 @@ public class CollectionsTest {
 	public void list1(){
 		new DartExecutor("collections.List1");
 	}
+
+	@Test
+	public void list2(){
+		new DartExecutor("collections.List2");
+	}
 	
 	@Test
 	public void map1(){

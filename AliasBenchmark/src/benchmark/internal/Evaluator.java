@@ -1,25 +1,15 @@
 package benchmark.internal;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import alias.Pair;
-
-import com.google.common.collect.Sets;
-
-import soot.Local;
-import soot.PointsToSet;
 import soot.SootMethod;
 import soot.jimple.Stmt;
 import soot.jimple.infoflow.solver.cfg.InfoflowCFG;
-import tests.AliasTest;
-import tests.dart.DartEvaluator;
+
+import com.google.common.collect.Sets;
+
 import dart.AliasFinder;
 
 public abstract class Evaluator {
@@ -49,8 +39,6 @@ public abstract class Evaluator {
 				gt.add(l);
 				if(!alias(l)){
 					falseNegativesPairs.add(l);
-					if(this instanceof DartEvaluator)
-						System.out.println(2);
 				};
 			};
 		}
@@ -72,7 +60,7 @@ public abstract class Evaluator {
 		}
 		int pointsToSize = getPointsToSize();	
 		int expected = queryInfo.computeExecpectedPointsToSize();
-		System.out.println("=========RESULTS FOR  "+ method.getDeclaringClass().getName() + "========");
+		System.out.println("=========RESULTS FOR  "+ method.getDeclaringClass().getName() + this.getClass().getSimpleName() + " ========");
 		System.out.println("GT:"+gt.size() +"," +gt );
 		System.out.println("FN:"+falseNegativesPairs.size()+ "," + falseNegativesPairs);
 		System.out.println("FP:"+falsePositivesPairs.size()+ "," + falsePositivesPairs);

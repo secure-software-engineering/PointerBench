@@ -1,7 +1,5 @@
 package benchmark.internal;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,11 +7,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import soot.Local;
-import soot.SootClass;
 import soot.SootMethod;
 import soot.jimple.Stmt;
-import tests.AliasTest;
 
 public class QueryInfo {
 

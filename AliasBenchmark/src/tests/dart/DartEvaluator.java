@@ -1,11 +1,11 @@
 package tests.dart;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import heros.solver.Pair;
+
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
-import heros.solver.Pair;
 import soot.Local;
 import soot.RefType;
 import soot.Scene;
@@ -17,12 +17,13 @@ import soot.jimple.infoflow.solver.cfg.BackwardsInfoflowCFG;
 import soot.jimple.infoflow.solver.cfg.InfoflowCFG;
 import soot.jimple.toolkits.ide.icfg.BiDiInterproceduralCFG;
 import soot.util.Chain;
-import tests.AliasTest;
+import test.core.AliasTest;
 import benchmark.internal.Evaluator;
 import benchmark.internal.QueryInfo;
 import dart.AliasFinder;
 import dart.DartContext;
 import dart.accesspath.AccessPath;
+import dart.accesspath.FieldWithStmt;
 import dart.cache.AliasResults;
 import dart.context.AllCallersRequester;
 
@@ -33,8 +34,7 @@ public class DartEvaluator extends Evaluator{
 
 
 	private void createDart() {
-		if(dart != null)
-			return;
+		AliasFinder.TYPE_CHECKING = false;
 		cfg = new InfoflowCFG();
 		BackwardsInfoflowCFG bwcfg = new BackwardsInfoflowCFG(cfg);
 		DartContext context = new DartContext(cfg, bwcfg);
@@ -45,11 +45,17 @@ public class DartEvaluator extends Evaluator{
 	protected boolean alias(String l) {
 		createDart();
 		AliasResults res1 = dart.findAliasAtStmt(parse(testVariable),  testStmt, new AllCallersRequester<BiDiInterproceduralCFG<Unit,SootMethod>>(cfg));
-		if(res1.isEmpty())
+		System.out.println(parse(testVariable));
+		System.out.println(res1);
+		if(res1.isEmpty()){
 			return false;
+		}
 
+		createDart();
 		AliasResults res2 = dart.findAliasAtStmt(parse(l),  testStmt, new AllCallersRequester<BiDiInterproceduralCFG<Unit,SootMethod>>(cfg));
-
+		System.out.println(parse(l) );
+		System.out.println(res2);
+		System.out.println("");
 		if(res2.isEmpty())
 			return false;
 		for(Pair<Unit, AccessPath> r1 : res1.keySet()){
@@ -88,7 +94,7 @@ public class DartEvaluator extends Evaluator{
 			if (arg.contains(".")) {
 				return findFieldsAndLocals(locals, arg);
 			} else if (l.toString().equals(arg)) {
-				return new AccessPath(l);
+				return new AccessPath(l, l.getType());
 			}
 		}
 
@@ -102,14 +108,14 @@ public class DartEvaluator extends Evaluator{
 		String[] base = arg.split("\\.");
 		Local findLocal = AliasTest.findSingleLocal(locals, base[0]);
 		if(base.length == 1){
-			return new AccessPath(findLocal);
+			return new AccessPath(findLocal, findLocal.getType());
 		}
 		String[] splitted = new String[base.length-1];
 		System.arraycopy(base, 1, splitted, 0, base.length-1);
 		Type t = null;
 		if(findLocal != null)
 			t = findLocal.getType();
-		ArrayList<SootField> fields = new ArrayList<SootField>();
+		LinkedList<FieldWithStmt> fields = new LinkedList<FieldWithStmt>();
 		for(int i = 0; i < splitted.length; i++){
 			if (t instanceof RefType || t == null) {
 				RefType refType = (RefType) t;
@@ -121,16 +127,18 @@ public class DartEvaluator extends Evaluator{
 					fieldByName = refType.getSootClass()
 						.getFieldByName(splitted[i]);
 				}
-				fields.add(fieldByName);
+				fields.add(new FieldWithStmt(fieldByName,fieldByName.getType(),null));
 				t = fieldByName.getType();
 			} else if(splitted[i].equals("array")){
-				fields.add(AliasFinder.ARRAY_FIELD);
+				fields.add(new FieldWithStmt(AliasFinder.ARRAY_FIELD, AliasFinder.ARRAY_FIELD.getType(),null));
 			} 
 			else {
 				throw new RuntimeException("Parsing of fields of locals failed");
 			}
 			
 		} 
-		return new AccessPath(findLocal, fields.toArray(new SootField[fields.size()]));
+		FieldWithStmt[] array = new FieldWithStmt[fields.size()];
+		array = fields.toArray(array);
+		return new AccessPath(findLocal,findLocal.getType(), array);
 	}
 }

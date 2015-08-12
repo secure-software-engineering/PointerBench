@@ -6,8 +6,6 @@ import java.util.Map;
 
 import soot.Body;
 import soot.G;
-import soot.Local;
-import soot.Main;
 import soot.PackManager;
 import soot.Scene;
 import soot.SceneTransformer;
@@ -19,7 +17,6 @@ import soot.jimple.AssignStmt;
 import soot.jimple.InvokeExpr;
 import soot.jimple.Stmt;
 import soot.options.Options;
-import tests.AliasTest;
 
 public abstract class Test {
 

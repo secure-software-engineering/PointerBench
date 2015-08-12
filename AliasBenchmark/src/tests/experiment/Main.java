@@ -49,7 +49,6 @@ public class Main {
 		"collections.Set1",
 		
 		"cornerCases.AccessPath1",
-		"cornerCases.AccessPath2",
 		"cornerCases.ContextSensitivity1",
 		"cornerCases.ContextSensitivity2",
 		"cornerCases.ContextSensitivity3",
@@ -68,7 +67,7 @@ public class Main {
 		"generalJava.Null2",
 		"generalJava.OuterClass1",
 		"generalJava.StaticVariables1",
-		"generalJava.SuperClass1",
+		"generalJava.SuperClasses1",
 	};
 
 	
@@ -86,7 +85,7 @@ public class Main {
 	
 	public static void main(String...args) throws IOException {
 		final FileWriter writer = new FileWriter("comparison-experiment.csv");
-		writer.write("Testcase,Gt,ptsGt,fpYan,fnYan,fpManu,fnManu,ptsRepManu,fpDart,fnDart,ptsRepDart\n");
+		writer.write("Testcase;Gt;ptsGt;Yan;Manu;ptsRepManu;Dart;ptsRepDart\n");
 		for(final String testcase : testcases){
 			initializeSoot(testcase);
 			Transform callConstantTransformer = new Transform("wjtp.preparation",
@@ -102,7 +101,7 @@ public class Main {
 								int ptsTP = queryInfo.computeExecpectedPointsToSize();
 								globalTP += testTP;
 								globalPTSTP += ptsTP;
-								writer.write(testcase+","+testTP+","+ptsTP+",");
+								writer.write(testcase+";"+testTP+";"+ptsTP+";");
 								int fp;
 								int fn;
 								ExprResult res;
@@ -117,7 +116,7 @@ public class Main {
 								}
 								globalYanFN += fn;
 								globalYanFP += fp;
-								writer.write(fp+","+fn+",");
+								writer.write(parse((testTP-fn),"\\TP")+parse((fp),"\\FP")+parse((fn),"\\FN")+";");
 
 								int ptsrep = 0;
 								try{
@@ -133,7 +132,7 @@ public class Main {
 								globalManuFN += fn;
 								globalManuFP += fp;
 								globalPTSREPMANU += ptsrep;
-								writer.write(fp+","+fn+"," + ptsrep+",");
+								writer.write(parse((testTP-fn),"\\TP")+parse((fp),"\\FP")+parse((fn),"\\FN")+";" + ptsrep+";");
 								DartEvaluator dart = new DartEvaluator(queryInfo);
 								res = dart.evaluateAlias();
 								fp = res.getFalsePositive().size();
@@ -142,12 +141,20 @@ public class Main {
 								globalDartFN += fn;
 								globalDartFP += fp;
 								globalPTSREPDART += ptsrep;
-								writer.write(fp+","+fn+"," + ptsrep+"\n");
+								writer.write(parse((testTP-fn),"\\TP")+parse((fp),"\\FP")+parse((fn),"\\FN")+";" + ptsrep+";\n");
 								
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+						}
+
+						private String parse(int j, String string) {
+							String s = "";
+							for(int i = 0; i < j; i++){
+								s += " " +string;
+							}
+							return s;
 						}
 	
 					});
