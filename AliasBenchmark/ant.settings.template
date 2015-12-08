@@ -1,5 +1,0 @@
-#Fill the following paths to compile with jars:
-
-#Location of soot.jar
-soot.jar=
-dart.jar=

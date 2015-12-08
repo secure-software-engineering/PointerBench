@@ -15,18 +15,18 @@ General Java
 	Super classes							1
 	Outer classes							1
 	Null aliasing (1 direct, 2 indirect)	2
-	Exceptions (1 triggered, 2 not trigg)	2
+	Exceptions (1 triggered, 2 not)			2
 
 Corner cases
 	Access paths (field sensitivity)		1
 	Object sensitive (1 caller, 2 receiver)	2
+	Field sensitive							1
 	Flow sensitive							1
-	Heap sensitive							-		-> TODO leave that for the moment
-	Context sensitive 						1		-> TODO must alias?				
-	Strong updates							1
+	Context sensitive 						3			
+	Strong updates							2
 
 Collections
-	Arrays (1 element, 2 slice)				2
+	Arrays (1 element)						1
 	Lists (ArrayList, LinkedList)			2
 	Maps (HashMap)							1
 	Sets (HashSet)							1
@@ -37,7 +37,7 @@ Collections
 Notations:
 
 Benchmark.alloc(1);
-	Used to mark an allocation site. The allocation site is the next new statement.
+	Used to mark an allocation site. The allocation site is the following new statement.
 	1 is the id of the allocation site. We refer to it at test
 	
 Benchmark.test("a.f", "{allocId:1, mayAlias:[b,a.f], notMayAlias:[], mustAlias:[b,x], notMustAlias:[]},
@@ -50,7 +50,6 @@ Benchmark.test("a.f", "{allocId:1, mayAlias:[b,a.f], notMayAlias:[], mustAlias:[
 		mayAlias and mustAlias give the access paths which alias to "a.f" through the referenced allocation site
 		notMayAlias and notMustAlias give all access paths of the program that do not alias to "a.f" through the referenced allocation site. 
 		Together, the alias and notAlias information is the full set of variables in the scope of the current method. This is particularly useful for a full alias analysis test.
-TODO: Must information can be derived from may information?
 	
 
 
@@ -70,5 +69,5 @@ Points-to analysis
 	Match them to the ids given at the Benchmark.alloc().
 	For each matching Benchmark.alloc(), make sure that the following allocation site is in the test access path's ("a.f") points-to set.
 	
-DART
+Boomerang
 	Query: at statement s, what are the possible allocation sites of variable a and what are the access paths possibly pointing to those allocation sites?

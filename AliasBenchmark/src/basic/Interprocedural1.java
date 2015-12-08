@@ -7,12 +7,12 @@ import benchmark.objects.B;
 /*
  * @testcase Method1
  * @version 1.0
- * @author Johannes Späth, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
+ * @author Johannes Spï¿½th, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
  * 
  * @description Alias in a static method
  * 
  */
-public class Method1 {
+public class Interprocedural1 {
 
 	public static void alloc(A x, A y) {
 		x.f = y.f;

@@ -1,5 +1,0 @@
-#Fill the following paths to compile with jars:
-
-#Location of soot.jar
-soot.jar=/Users/spaeth/Documents/workspace/builds/soot-trunk.jar
-dart.jar=/Users/spaeth/Documents/workspace/builds/dart.jar

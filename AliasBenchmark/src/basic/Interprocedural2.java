@@ -7,14 +7,14 @@ import benchmark.objects.B;
 /*
  * @testcase Method2
  * @version 1.0
- * @author Johannes Späth, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
+ * @author Johannes Spï¿½th, Nguyen Quang Do Lisa (Secure Software Engineering Group, Fraunhofer Institute SIT)
  * 
  * @description Alias in a method
  * 
  */
-public class Method2 {
+public class Interprocedural2 {
 
-	public Method2() {
+	public Interprocedural2() {
 	}
 
 	public void alloc(A x, A y) {
@@ -28,7 +28,7 @@ public class Method2 {
 
 		Benchmark.alloc(1);
 		b.f = new B();
-		Method2 m2 = new Method2();
+		Interprocedural2 m2 = new Interprocedural2();
 		m2.alloc(a, b);
 
 		B x = a.f;
