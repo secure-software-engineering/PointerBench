@@ -1,6 +1,5 @@
 package benchmark.internal;
 
-import benchmark.objects.A;
 
 public class Benchmark {
 
