@@ -3,17 +3,17 @@ package benchmark.objects;
 public class Q {
 	// Class P extends class Q
 
-	private A a;
+	private Object a;
 
-	public Q(A a) {
+	public Q(Object a) {
 		this.a = a;
 	}
 
-	public void alias(A x) {
+	public void alias(Object x) {
 		this.a = x;
 	}
 	
-	public A getA(){
+	public Object getA(){
 		return a;
 	}
 }

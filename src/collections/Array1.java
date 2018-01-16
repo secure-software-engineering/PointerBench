@@ -2,6 +2,7 @@ package collections;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase Array1
@@ -17,15 +18,14 @@ public class Array1 {
 
   public static void main(String[] args) {
 
-    A[] array = new A[] {};
-    A a = new A();
-    Benchmark.alloc(1);
-    A b = new A();
+    Object[] array = new Object[] {};
+    Object a = new Object();
     array[0] = a;
+    Object b = new Alloc();
     array[1] = b;
-    A c = array[1];
-    Benchmark
-        .test("c",
-            "{allocId:1, mayAlias:[c,b], notMayAlias:[a,array], mustAlias:[c,b], notMustAlias:[a,array]}");
+    Object c = array[1];
+    Benchmark.pointsToQuery(c);
+    Benchmark.mayAliasQuery(c,a,false);
+    Benchmark.mayAliasQuery(c,b,true);
   }
 }

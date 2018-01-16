@@ -2,6 +2,7 @@ package basic;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase ReturnValue1
@@ -17,17 +18,16 @@ public class ReturnValue2 {
 
   public ReturnValue2() {}
 
-  public A id(A x) {
+  public Object id(Object x) {
     return x;
   }
 
   public static void main(String[] args) {
 
-    Benchmark.alloc(1);
-    A a = new A();
+    Object a = new Alloc();
     ReturnValue2 rv2 = new ReturnValue2();
-    A b = rv2.id(a);
-    Benchmark.test("b",
-        "{allocId:1, mayAlias:[a,b], notMayAlias:[rv2], mustAlias:[a,b], notMustAlias:[rv2]}");
+    Object b = rv2.id(a);
+    Benchmark.pointsToQuery(b);
+    Benchmark.mayAliasQuery(a, b, true);
   }
 }

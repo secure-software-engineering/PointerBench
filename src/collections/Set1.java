@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase Set1
@@ -19,20 +20,21 @@ public class Set1 {
 
   public static void main(String[] args) {
 
-    HashSet<A> set = new HashSet<A>();
-    A a = new A();
-    A c = null;
-    Benchmark.alloc(1);
-    A b = new A();
+    HashSet<Object> set = new HashSet<Object>();
+    Object a = new Object();
+    Object c = null;
+    Object b = new Alloc();
     set.add(a);
     set.add(b);
-    for (A i : set) {
+    for (Object i : set) {
       c = i;
       break;
     }
     a = null;
-    Benchmark.test("c",
-        "{allocId:1, mayAlias:[c], notMayAlias:[a,b,set], mustAlias:[c], notMustAlias:[a,b,set]}");
-    Benchmark.use(c);
+
+    Benchmark.pointsToQuery(c);
+    Benchmark.mayAliasQuery(c, a, false);
+    Benchmark.mayAliasQuery(c, b, false);
+    Benchmark.mayAliasQuery(c, set, false);
   }
 }

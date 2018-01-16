@@ -1,13 +1,12 @@
 package benchmark.objects;
 
-import benchmark.internal.Benchmark;
+import pointerbench.markers.Allocation;
 
-public class N {
+public class N implements Allocation{
 	public String value = "";
 	public N next;
 
 	public N() {
-		Benchmark.alloc(2);
 		next = new N();
 	}
 }

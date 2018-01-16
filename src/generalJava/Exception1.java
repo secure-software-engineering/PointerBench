@@ -2,6 +2,8 @@ package generalJava;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import benchmark.objects.B;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase Exception1
@@ -17,17 +19,16 @@ public class Exception1 {
 
   public static void main(String[] args) {
 
-    Benchmark.alloc(1);
-    A a = new A();
-    A b = new A();
+	Object a = new Alloc();
+    Object b = new Object();
 
     try {
       b = a;
       throw new RuntimeException();
 
     } catch (RuntimeException e) {
-      Benchmark.test("b",
-          "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]}");
+    	Benchmark.pointsToQuery(a);
+    	Benchmark.mayAliasQuery(a, b, false);
     }
 
   }

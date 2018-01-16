@@ -3,6 +3,7 @@ package cornerCases;
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 import benchmark.objects.B;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase ObjectSensitivity1
@@ -19,15 +20,16 @@ public class ObjectSensitivity1 {
   public static void main(String[] args) {
 
     B b1 = new B();
-    Benchmark.alloc(1);
-    B b2 = new B();
+    Alloc b2 = new Alloc();
 
     A a1 = new A(b1);
     A a2 = new A(b2);
 
-    B b3 = a1.getF();
-    B b4 = a2.getF();
+    Object b3 = a1.getF();
+    Object b4 = a2.getF();
 
+    Benchmark.pointsToQuery(b4);
+    Benchmark.mayAliasQuery(b3, b4, false);
     Benchmark
         .test(
             "b4",

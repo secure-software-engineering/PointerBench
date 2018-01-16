@@ -2,6 +2,7 @@ package cornerCases;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase FlowSensitivity1
@@ -15,15 +16,14 @@ import benchmark.objects.A;
  */
 public class FlowSensitivity1 {
 
-  public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    A a = new A();
-    Benchmark.alloc(1);
-    A b = new A();
+		Object a = new Object();
+		Object b = new Alloc();
 
-    Benchmark.test("b",
-        "{allocId:1, mayAlias:[b], notMayAlias:[a], mustAlias:[b], notMustAlias:[a]}");
+		Benchmark.pointsToQuery(b);
+		Benchmark.mayAliasQuery(a, b, false);
 
-    b = a;
-  }
+		b = a;
+	}
 }

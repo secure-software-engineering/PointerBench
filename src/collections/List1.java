@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase List1
@@ -19,15 +20,14 @@ public class List1 {
 
   public static void main(String[] args) {
 
-    ArrayList<A> list = new ArrayList<A>();
-    A a = new A();
-    Benchmark.alloc(1);
-    A b = new A();
+    ArrayList<Object> list = new ArrayList<Object>();
+    Object a = new Object();
+    Object b = new Alloc();
     list.add(a);
     list.add(b);
-    A c = list.get(1);
-    Benchmark
-        .test("b",
-            "{allocId:1, mayAlias:[c,b], notMayAlias:[a,list], mustAlias:[c,b], notMustAlias:[a,list]}");
+    Object c = list.get(1);
+    Benchmark.pointsToQuery(c);
+    Benchmark.mayAliasQuery(c, b, true);
+    Benchmark.mayAliasQuery(c, a, false);
   }
 }

@@ -4,6 +4,7 @@ import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 import benchmark.objects.G;
 import benchmark.objects.H;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase Interface1
@@ -19,19 +20,16 @@ public class Interface1 {
 
   public static void main(String[] args) {
 
-    A a = new A();
-    Benchmark.alloc(1);
-    A b = new A();
+	Object a = new Object();
+    Object b = new Alloc();
 
     G g = new G();
     H h = new H();
     g.foo(a);
-    A c = h.foo(b);
+    Object c = h.foo(b);
 
-    Benchmark.test("c",
-        "{allocId:1, mayAlias:[c,b], notMayAlias:[a,g,h], mustAlias:[c,b], notMustAlias:[a,g,h]}");
-
-    Benchmark.use(c);
+    Benchmark.pointsToQuery(c);
+    Benchmark.mayAliasQuery(b, a, false);
   }
 
 }

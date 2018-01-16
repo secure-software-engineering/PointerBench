@@ -3,6 +3,7 @@ package basic;
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 import benchmark.objects.B;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase Method2
@@ -27,15 +28,12 @@ public class Interprocedural2 {
     A a = new A();
     A b = new A();
 
-    Benchmark.alloc(1);
-    b.f = new B();
+    b.f = new Alloc();
     Interprocedural2 m2 = new Interprocedural2();
     m2.alloc(a, b);
 
-    B x = a.f;
-    B y = b.f;
-    Benchmark
-        .test("x",
-            "{allocId:1, mayAlias:[x,y], notMayAlias:[a,b,m2], mustAlias:[x,y], notMustAlias:[a,b,m2]}");
+    Object x = a.f;
+    Object y = b.f;
+    Benchmark.pointsToQuery(x);
   }
 }

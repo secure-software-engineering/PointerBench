@@ -1,6 +1,7 @@
 package basic;
 
 import benchmark.internal.Benchmark;
+import pointerbench.markers.Allocation;
 
 /*
  * @testcase Loops1
@@ -14,7 +15,7 @@ import benchmark.internal.Benchmark;
  */
 public class Loops1 {
 
-  public class N {
+  public class N implements Allocation {
     public String value = "";
     public N next;
 
@@ -24,7 +25,6 @@ public class Loops1 {
   }
 
   private void test() {
-    Benchmark.alloc(1);
     N node = new N();
 
     int i = 0;
@@ -36,10 +36,10 @@ public class Loops1 {
     N o = node.next;
     N p = node.next.next;
     N q = node.next.next.next;
-
-    Benchmark
-        .test("node",
-            "{allocId:1, mayAlias:[node], notMayAlias:[i,o,p,q], mustAlias:[node], notMustAlias:[i,o,p,q]}");
+	Benchmark.pointsToQuery(node);
+	Benchmark.mayAliasQuery(node, o, false);
+	Benchmark.mayAliasQuery(node, p, false);
+	Benchmark.mayAliasQuery(node, q, false);
   }
 
   public static void main(String[] args) {

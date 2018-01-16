@@ -3,6 +3,7 @@ package cornerCases;
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 import benchmark.objects.B;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase StrongUpdate1
@@ -20,11 +21,10 @@ public class StrongUpdate2 {
 
     A a = new A();
     A b = a;
-    B x = b.f;
-    Benchmark.alloc(1);
-    a.f = new B();
-    B y = b.f;
-    Benchmark.test("y",
-        "{allocId:1, mayAlias:[y], notMayAlias:[x], mustAlias:[y], notMustAlias:[x]}");
+    Object x = b.f;
+    a.f = new Alloc();
+    Object y = b.f;
+    Benchmark.pointsToQuery(y);
+    Benchmark.mayAliasQuery(x, y, false);
   }
 }

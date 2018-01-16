@@ -6,24 +6,24 @@ public class A {
 
 	public int i = 5;
 
-	public B f = new B();
-	public B g = new B();
-	public B h;
+	public Object f = new B();
+	public Object g = new B();
+	public Object h;
 
 	public A() {
 	}
 
-	public A(B b) {
+	public A(Object b) {
 		this.f = b;
 	}
 
-	public B getF() {
+	public Object getF() {
 		return f;
 	}
-	public B getH() {
+	public Object getH() {
 		return h;
 	}
-	public B id(B b) {
+	public Object id(Object b) {
 		return b;
 	}
 

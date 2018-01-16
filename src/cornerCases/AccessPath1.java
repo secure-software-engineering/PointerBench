@@ -17,7 +17,7 @@ public class AccessPath1 {
 
   public static void main(String[] args) {
 
-    Benchmark.alloc(1);
+//    Benchmark.alloc(1);
     A a = new A();
     A b = new A();
 

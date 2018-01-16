@@ -3,6 +3,7 @@ package cornerCases;
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 import benchmark.objects.B;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase FieldSensitivity1
@@ -22,15 +23,15 @@ public class FieldSensitivity1 {
 
   public static void main(String[] args) {
 
-    Benchmark.alloc(1);
-    B b = new B();
+    Alloc b = new Alloc();
     A a = new A(b);
     A c = new A();
     assign(a, c);
-    B d = c.f;
+    Object d = c.f;
 
-    Benchmark.test("d",
-        "{allocId:1, mayAlias:[d,b], notMayAlias:[a,c], mustAlias:[d,b], notMustAlias:[a,c]}");
+    Benchmark.pointsToQuery(d);
+    Benchmark.mayAliasQuery(a, c, false);
+    Benchmark.mayAliasQuery(d, b, true);
 
   }
 

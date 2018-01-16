@@ -1,6 +1,7 @@
 package basic;
 
 import benchmark.internal.Benchmark;
+import pointerbench.markers.Allocation;
 
 /*
  * @testcase Loops2
@@ -14,35 +15,33 @@ import benchmark.internal.Benchmark;
  */
 public class Loops2 {
 
-  public class N {
-    public String value = "";
-    public N next;
+	public class N implements Allocation {
+		public String value = "";
+		public N next;
 
-    public N() {
-      Benchmark.alloc(2);
-      next = new N();
-    }
-  }
+		public N() {
+			next = new N();
+		}
+	}
 
-  private void test() {
-    Benchmark.alloc(1);
-    N node = new N();
+	private void test() {
+		N node = new N();
 
-    int i = 0;
-    while (i < 10) {
-      node = node.next;
-      i++;
-    }
+		int i = 0;
+		while (i < 10) {
+			node = node.next;
+			i++;
+		}
 
-    N o = node.next;
-    N p = node.next.next;
-    Benchmark.test("node",
-        "{allocId:1, mayAlias:[node], notMayAlias:[i,o,p], mustAlias:[node], notMustAlias:[p]},"
-            + "{allocId:2, mayAlias:[o], notMayAlias:[node], mustAlias:[o], notMustAlias:[p]}");
-  }
+		N o = node.next;
+		N p = node.next.next;
+		Benchmark.pointsToQuery(node);
+		Benchmark.mayAliasQuery(node, o, false);
+		Benchmark.mayAliasQuery(node, p, false);
+	}
 
-  public static void main(String[] args) {
-    Loops2 l1 = new Loops2();
-    l1.test();
-  }
+	public static void main(String[] args) {
+		Loops2 l1 = new Loops2();
+		l1.test();
+	}
 }

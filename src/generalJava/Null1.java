@@ -20,8 +20,8 @@ public class Null1 {
 
     // No allocation site
     A h = new A();
-    B a = h.getH();
-    B b = a;
+    Object a = h.getH();
+    Object b = a;
     Benchmark.test("b",
         "{NULLALLOC, mayAlias:[], notMayAlias:[b,a], mustAlias:[b,a], notMustAlias:[i]}");
     Benchmark.use(b);

@@ -2,6 +2,7 @@ package generalJava;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase StaticVariables1
@@ -15,14 +16,13 @@ import benchmark.objects.A;
  */
 public class StaticVariables1 {
 
-  private static A a;
+  private static Object a;
 
   public static void main(String[] args) {
-    Benchmark.alloc(1);
-    a = new A();
-    A b = a;
-    A c = a;
-    Benchmark.test("b",
-        "{allocId:1, mayAlias:[b,c], notMayAlias:[], mustAlias:[b,c], notMustAlias:[]}");
+    a = new Alloc();
+    Object b = a;
+    Object c = a;
+    Benchmark.pointsToQuery(c);
+    Benchmark.mayAliasQuery(b,c,true);
   }
 }

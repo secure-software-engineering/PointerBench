@@ -2,6 +2,7 @@ package generalJava;
 
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
+import pointerbench.markers.Alloc;
 
 /*
  * @testcase OuterClass1
@@ -15,35 +16,35 @@ import benchmark.objects.A;
  */
 public class OuterClass1 {
 
-  public OuterClass1() {}
+	public OuterClass1() {
+	}
 
-  public class InnerClass {
-    private A a;
+	public class InnerClass {
+		private Object a;
 
-    public InnerClass(A a) {
-      this.a = a;
-    }
+		public InnerClass(Object a) {
+			this.a = a;
+		}
 
-    public void alias(A x) {
-      this.a = x;
-    }
-  }
+		public void alias(Object x) {
+			this.a = x;
+		}
+	}
 
-  private void test() {
-    Benchmark.alloc(1);
-    A a = new A();
-    A b = new A();
+	private void test() {
+		Object a = new Alloc();
+		Object b = new Object();
 
-    InnerClass i = new InnerClass(a);
-    i.alias(b);
-    A h = i.a;
-    Benchmark.test("h",
-        "{allocId:1, mayAlias:[b,h], notMayAlias:[i,a], mustAlias:[b,a], notMustAlias:[i]}");
-  }
+		InnerClass i = new InnerClass(a);
+		i.alias(b);
+		Object h = i.a;
+		Benchmark.pointsToQuery(h);
+		Benchmark.mayAliasQuery(h, b, true);
+	}
 
-  private static void main(String[] args) {
-    OuterClass1 oc1 = new OuterClass1();
-    oc1.test();
-  }
+	public static void main(String[] args) {
+		OuterClass1 oc1 = new OuterClass1();
+		oc1.test();
+	}
 
 }

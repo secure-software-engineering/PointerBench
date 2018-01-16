@@ -1,6 +1,7 @@
 package basic;
 
 import benchmark.internal.Benchmark;
+import pointerbench.markers.Allocation;
 
 /*
  * @testcase Recursion1
@@ -16,7 +17,7 @@ public class Recursion1 {
 
   public Recursion1() {}
 
-  public class N {
+  public class N implements Allocation{
     public String value;
     public N next;
 
@@ -35,7 +36,6 @@ public class Recursion1 {
   }
 
   public void test() {
-    Benchmark.alloc(1);
     N node = new N("");
 
     Recursion1 r1 = new Recursion1();
@@ -45,8 +45,10 @@ public class Recursion1 {
     N p = node.next.next;
     N q = node.next.next.next;
 
-    Benchmark.test("n",
-        "{allocId:1, mayAlias:[n], notMayAlias:[o,p,q], mustAlias:[n], notMustAlias:[o,p,q]}");
+    Benchmark.pointsToQuery(n);
+    Benchmark.mayAliasQuery(n, o, false);
+    Benchmark.mayAliasQuery(n, p, false);
+    Benchmark.mayAliasQuery(n, q, false);
   }
 
   public static void main(String[] args) {

@@ -3,9 +3,9 @@ package benchmark.objects;
 public class H implements I {
 	// G and H implement I
 
-	A a;
+	Object a;
 
-	public A foo(A a) {
+	public Object foo(Object a) {
 		this.a = a;
 		return a;
 	}
