@@ -32,14 +32,15 @@ public class OuterClass1 {
 	}
 
 	private void test() {
-		Object a = new Alloc();
-		Object b = new Object();
+		Object a = new Object();
+		Object b = new Alloc();
 
 		InnerClass i = new InnerClass(a);
 		i.alias(b);
 		Object h = i.a;
 		Benchmark.pointsToQuery(h);
 		Benchmark.mayAliasQuery(h, b, true);
+		Benchmark.mayAliasQuery(h, a, false);
 	}
 
 	public static void main(String[] args) {
