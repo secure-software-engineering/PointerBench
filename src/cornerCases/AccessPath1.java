@@ -22,8 +22,8 @@ public class AccessPath1 {
     A b = new A();
 
     a.f = b.f;
-    Benchmark
-        .test("a.f",
-            "{allocId:1, mayAlias:[a.f,b.f], notMayAlias:[a,b], mustAlias:[a.f,b.f], notMustAlias:[a,b]}");
+//    Benchmark
+//        .test("a.f",
+//            "{allocId:1, mayAlias:[a.f,b.f], notMayAlias:[a,b], mustAlias:[a.f,b.f], notMustAlias:[a,b]}");
   }
 }

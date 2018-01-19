@@ -35,5 +35,6 @@ public class Interprocedural2 {
     Object x = a.f;
     Object y = b.f;
     Benchmark.pointsToQuery(x);
+    Benchmark.mayAliasQuery(x, y, true);
   }
 }

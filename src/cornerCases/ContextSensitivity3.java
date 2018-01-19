@@ -21,9 +21,6 @@ public class ContextSensitivity3 {
   public void callee(Object a, Object b) {
 	  Benchmark.pointsToQuery(b);
 	  Benchmark.mayAliasQuery(a, b, true);
-    Benchmark.test("b",
-        "{allocId:1, mayAlias:[a,b], notMayAlias:[], mustAlias:[a,b], notMustAlias:[]},"
-            + "{allocId:2, mayAlias:[a], notMayAlias:[b], mustAlias:[a], notMustAlias:[b]}");
   }
 
   public void test1() {

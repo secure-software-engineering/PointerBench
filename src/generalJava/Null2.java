@@ -20,8 +20,8 @@ public class Null2 {
 		A a = new A();
 		A b = a;
 		Object x = b.h; // a.h is null
-		Benchmark
-				.test("x",
-						"{NULLALLOC, mayAlias:[], notMayAlias:[b,a], mustAlias:[b,a], notMustAlias:[i]}");
+//		Benchmark
+//				.test("x",
+//						"{NULLALLOC, mayAlias:[], notMayAlias:[b,a], mustAlias:[b,a], notMustAlias:[i]}");
 	}
 }

@@ -22,8 +22,8 @@ public class Null1 {
     A h = new A();
     Object a = h.getH();
     Object b = a;
-    Benchmark.test("b",
-        "{NULLALLOC, mayAlias:[], notMayAlias:[b,a], mustAlias:[b,a], notMustAlias:[i]}");
+//    Benchmark.test("b",
+//        "{NULLALLOC, mayAlias:[], notMayAlias:[b,a], mustAlias:[b,a], notMustAlias:[i]}");
     Benchmark.use(b);
   }
 }
