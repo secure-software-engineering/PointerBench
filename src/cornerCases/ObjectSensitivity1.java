@@ -30,9 +30,5 @@ public class ObjectSensitivity1 {
 
     Benchmark.pointsToQuery(b4);
     Benchmark.mayAliasQuery(b3, b4, false);
-    Benchmark
-        .test(
-            "b4",
-            "{allocId:1, mayAlias:[b4,b2], notMayAlias:[a1,a2,b1,b3], mustAlias:[b4,b2], notMustAlias:[a1,a2,b1,b3]}");
   }
 }
