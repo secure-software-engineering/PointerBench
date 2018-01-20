@@ -36,7 +36,7 @@ public class Loops2 {
 		N o = node.next;
 		N p = node.next.next;
 		Benchmark.pointsToQuery(node);
-		Benchmark.mayAliasQuery(node, o, false);
+		Benchmark.mayAliasQuery(node, o, true);
 		Benchmark.mayAliasQuery(node, p, false);
 	}
 

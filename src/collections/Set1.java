@@ -30,8 +30,7 @@ public class Set1 {
       c = i;
       break;
     }
-    a = null;
-
+    a = new Object();
     Benchmark.pointsToQuery(c);
     Benchmark.mayAliasQuery(c, a, false);
     Benchmark.mayAliasQuery(c, b, false);

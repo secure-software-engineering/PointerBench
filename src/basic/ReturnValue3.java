@@ -33,6 +33,6 @@ public class ReturnValue3 {
     Benchmark.mayAliasQuery(a, b, false);
     Benchmark.mayAliasQuery(a, y, false);
     Benchmark.mayAliasQuery(b, y, false);
-    Benchmark.mayAliasQuery(x, y, true);
+    Benchmark.mayAliasQuery(x, y, false);
   }
 }

@@ -10,7 +10,7 @@ public class Benchmark {
 		return false;
 	}
 
-	public static void pointsToQuery(Object a) {
+	public static void pointsToQuery(Object queryObject) {
 		
 	}
 

@@ -25,7 +25,7 @@ public class SuperClasses1 {
     p.alias(b);
     Object h = p.getA();
     Benchmark.pointsToQuery(h);
-    Benchmark.mayAliasQuery(a,b,true);
+    Benchmark.mayAliasQuery(a,b,false);
   }
 
 }
