@@ -21,9 +21,15 @@ public class FlowSensitivity1 {
 		Object a = new Object();
 		Object b = new Alloc();
 
-		Benchmark.pointsToQuery(b);
-		Benchmark.mayAliasQuery(a, b, false);
+		if(staticallyUnknown())
+			b = a;
+		else{
+			Benchmark.pointsToQuery(b);
+			Benchmark.mayAliasQuery(a, b, false);
+		}
+	}
 
-		b = a;
+	private static boolean staticallyUnknown() {
+		return false;
 	}
 }
