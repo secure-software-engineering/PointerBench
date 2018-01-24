@@ -19,7 +19,7 @@ public class ReturnValue3 {
 
   public static A id(A x) {
     A y = new A();
-    y.f = new Alloc();
+    y.j = new Alloc();
     return y;
   }
 
@@ -27,8 +27,8 @@ public class ReturnValue3 {
 
     A a = new A();
     A b = id(a);
-    Object x = b.f;
-    Object y = a.f;
+    Object x = b.j;
+    Object y = a.j;
     Benchmark.pointsToQuery(x);
     Benchmark.mayAliasQuery(a, b, false);
     Benchmark.mayAliasQuery(a, y, false);

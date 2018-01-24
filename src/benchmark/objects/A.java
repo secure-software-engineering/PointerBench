@@ -9,6 +9,7 @@ public class A {
 	public Object f = new B();
 	public Object g = new B();
 	public Object h;
+	public Object j;
 
 	public A() {
 	}
