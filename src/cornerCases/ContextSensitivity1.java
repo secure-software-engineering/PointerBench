@@ -22,7 +22,6 @@ public class ContextSensitivity1 {
 	Benchmark.pointsToQuery(b);
 	Benchmark.mayAliasQuery(a, b, true);
 	Benchmark.mayAliasQuery(a, b, true);
-	Benchmark.pointsToQuery(a);
   }
 
   public void test1() {
