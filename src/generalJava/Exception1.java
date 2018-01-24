@@ -28,7 +28,7 @@ public class Exception1 {
 
     } catch (RuntimeException e) {
     	Benchmark.pointsToQuery(a);
-    	Benchmark.mayAliasQuery(a, b, false);
+    	Benchmark.mayAliasQuery(a, b, true);
     }
 
   }
