@@ -1,7 +1,6 @@
 package cornerCases;
 
 import benchmark.internal.Benchmark;
-import benchmark.objects.A;
 import pointerbench.markers.Alloc;
 
 /*
@@ -17,19 +16,22 @@ import pointerbench.markers.Alloc;
 public class FlowSensitivity1 {
 
 	public static void main(String[] args) {
-
-		Object a = new Object();
-		Object b = new Alloc();
-
-		if(staticallyUnknown())
-			b = a;
-		else{
-			Benchmark.pointsToQuery(b);
-			Benchmark.mayAliasQuery(a, b, false);
+		Object b = new Object();
+		Container c = new Container();
+		if(staticallyUnknown()) {
+			Object o = c.field;
+			Benchmark.pointsToQuery(o);
+			Benchmark.mayAliasQuery(o, b, false);
+		} else{
+			c.field = b;
 		}
 	}
 
 	private static boolean staticallyUnknown() {
 		return false;
+	}
+	
+	private static class Container{
+		Object field = new Alloc();
 	}
 }
