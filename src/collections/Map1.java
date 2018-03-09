@@ -19,13 +19,14 @@ import pointerbench.markers.Alloc;
 public class Map1 {
 
   public static void main(String[] args) {
-
-    HashMap<String, Object> map = new HashMap<String, Object>();
+    HashMap<Object, Object> map = new HashMap<Object, Object>();
+    Object key1 = new Object();
+    Object key2 = new Object();
     Object a = new Object();
     Object b = new Alloc();
-    map.put("first", a);
-    map.put("second", b);
-    Object c = map.get("second");
+    map.put(key1, a);
+    map.put(key2, b);
+    Object c = map.get(key2);
     Benchmark.pointsToQuery(c);
     Benchmark.mayAliasQuery(c, a, false);
     Benchmark.mayAliasQuery(c, b, true);
