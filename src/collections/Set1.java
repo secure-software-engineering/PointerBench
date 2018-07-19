@@ -31,7 +31,7 @@ public class Set1 {
       break;
     }
     a = new Object();
-    Benchmark.pointsToQuery(c);
+    Benchmark.pointsToQuery(a);
     Benchmark.mayAliasQuery(c, a, false);
     Benchmark.mayAliasQuery(c, b, false);
     Benchmark.mayAliasQuery(c, set, false);

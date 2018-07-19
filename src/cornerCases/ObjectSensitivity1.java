@@ -17,18 +17,35 @@ import pointerbench.markers.Alloc;
  */
 public class ObjectSensitivity1 {
 
-  public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    B b1 = new B();
-    Alloc b2 = new Alloc();
+		B b1 = new B();
+		Alloc b2 = new Alloc();
 
-    A a1 = new A(b1);
-    A a2 = new A(b2);
+		A a1 = new A(b1);
+		A a2 = new A(b2);
 
-    Object b3 = a1.getF();
-    Object b4 = a2.getF();
+		Object b3 = a1.getF();
+		Object b4 = a2.getF();
 
-    Benchmark.pointsToQuery(b4);
-    Benchmark.mayAliasQuery(b3, b4, false);
-  }
+		Benchmark.mayAliasQuery(b3, b4, false);
+		Benchmark.pointsToQuery(b4);
+	}
+
+	private static class A {
+		Object f;
+
+		public A(Object b1) {
+			this.f = b1;
+		}
+
+		public Object getF() {
+			return this.f;
+		}
+
+	}
+
+	private static class B {
+
+	}
 }
