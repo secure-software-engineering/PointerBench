@@ -3,7 +3,6 @@ package collections;
 import java.util.HashSet;
 
 import benchmark.internal.Benchmark;
-import benchmark.objects.A;
 import pointerbench.markers.Alloc;
 
 /*
@@ -27,13 +26,12 @@ public class Set1 {
     set.add(a);
     set.add(b);
     for (Object i : set) {
-      c = i;
-      break;
+      c = i;      
+      Benchmark.pointsToQuery(c);
+      a = new Object();
+      Benchmark.mayAliasQuery(c, a, false);
+      Benchmark.mayAliasQuery(c, b, false);
+      Benchmark.mayAliasQuery(c, set, false);
     }
-    a = new Object();
-    Benchmark.pointsToQuery(a);
-    Benchmark.mayAliasQuery(c, a, false);
-    Benchmark.mayAliasQuery(c, b, false);
-    Benchmark.mayAliasQuery(c, set, false);
   }
 }
