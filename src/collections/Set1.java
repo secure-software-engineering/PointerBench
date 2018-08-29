@@ -1,6 +1,6 @@
 package collections;
 
-import java.util.HashSet;
+import java.util.TreeSet;
 
 import benchmark.internal.Benchmark;
 import pointerbench.markers.Alloc;
@@ -19,7 +19,7 @@ public class Set1 {
 
   public static void main(String[] args) {
 
-    HashSet<Object> set = new HashSet<Object>();
+    TreeSet<Object> set = new TreeSet<Object>();
     Object a = new Object();
     Object c = null;
     Object b = new Alloc();
