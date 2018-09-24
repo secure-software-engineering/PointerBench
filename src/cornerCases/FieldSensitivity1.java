@@ -3,6 +3,7 @@ package cornerCases;
 import benchmark.internal.Benchmark;
 import benchmark.objects.A;
 import benchmark.objects.B;
+import benchmark.objects.C;
 import pointerbench.markers.Alloc;
 
 /*
@@ -17,15 +18,15 @@ import pointerbench.markers.Alloc;
  */
 public class FieldSensitivity1 {
 
-  private static void assign(A x, A y) {
+  private static void assign(C x, C y) {
     y.f = x.f;
   }
 
   public static void main(String[] args) {
 
     Alloc b = new Alloc();
-    A a = new A(b);
-    A c = new A();
+    C a = new C(b);
+    C c = new C();
     assign(a, c);
     Object d = c.f;
 

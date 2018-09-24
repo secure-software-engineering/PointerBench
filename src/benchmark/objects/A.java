@@ -6,8 +6,7 @@ public class A {
 
 	public int i = 5;
 
-	public Object f = new B();
-	public Object g = new B();
+	public Object f;
 	public Object h;
 	public Object j;
 

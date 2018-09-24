@@ -28,8 +28,8 @@ public class ObjectSensitivity1 {
 		Object b3 = a1.getF();
 		Object b4 = a2.getF();
 
-		Benchmark.mayAliasQuery(b3, b4, false);
 		Benchmark.pointsToQuery(b4);
+		Benchmark.mayAliasQuery(b3, b4, false);
 	}
 
 	private static class A {
